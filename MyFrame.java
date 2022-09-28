@@ -13,7 +13,7 @@ public class MyFrame extends JFrame implements ActionListener {
   private JTextField textField;
   
   public MyFrame(){
-	    frame = new JFrame();
+	    frame = new JFrame("VCRTS Project");
 	    frame.setSize(300,300);
 	    frame.setVisible(true);
 	    panel = new JPanel();
