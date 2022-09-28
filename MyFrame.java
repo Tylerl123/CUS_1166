@@ -13,7 +13,7 @@ public class MyFrame extends JFrame implements ActionListener {
   private JTextField textField;
   
   public MyFrame(){
-	    frame = new JFrame("VCRTS Project");
+	    frame = new JFrame("VCRTS Project");  //This creates the initial frame with the owner and user button
 	    frame.setSize(500,500);
 	    frame.setVisible(true);
 	    panel = new JPanel();
@@ -28,7 +28,7 @@ public class MyFrame extends JFrame implements ActionListener {
 	  
 	textField = new JTextField();
         textField.setPreferredSize(new Dimension(250,40));
-        textField.setFont(new Font("Courier New",Font.PLAIN,15));
+        textField.setFont(new Font("Courier New",Font.PLAIN,15));		//This is the text field that goes along with the inital frame
         panel.add(textField);
   }
 
