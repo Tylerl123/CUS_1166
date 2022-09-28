@@ -13,17 +13,15 @@ public class MyFrame extends JFrame implements ActionListener {
  JTextField textField;
   
   public MyFrame(){
-    frame = new JFrame();
-    frame.setSize(300,300);
-    frame.setVisible(true);
-    panel = new JPanel();
-    frame.add(panel);
-    button = new JButton("Owner");
-    this.add(button);
-        this.setVisible(true);
-    panel.add(button);
-    button.addActionListener(this);
-    
+	    frame = new JFrame();
+	    frame.setSize(300,300);
+	    frame.setVisible(true);
+	    panel = new JPanel();
+	    frame.add(panel);
+	    button = new JButton("Owner");
+	    panel.add(button);
+	    button.addActionListener(this);
+	    
 
   
 }
