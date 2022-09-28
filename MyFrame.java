@@ -49,7 +49,16 @@ public class MyFrame extends JFrame implements ActionListener {
         JFrame frame2 = new JFrame("Owner Login");
         JPanel panel2 = new JPanel();
         JLabel label2 = new JLabel("Username");
-        JButton back = new JButton("Back!");
+        		JButton back = new JButton(new AbstractAction("Back!") {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				frame.setVisible(true);
+				frame2.dispose();
+			}
+			
+		});
 
         JTextField textField2 = new JTextField();
         textField2.setPreferredSize(new Dimension(250,40));
