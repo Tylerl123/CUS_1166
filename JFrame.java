@@ -12,7 +12,7 @@ public class JFrame extends JFrame implements ActionListener {
   
  JTextField textField;
   
-  frame(){
+  MyFrame(){
     
   
   
