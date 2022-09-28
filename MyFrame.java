@@ -14,7 +14,7 @@ public class MyFrame extends JFrame implements ActionListener {
   
   public MyFrame(){
 	    frame = new JFrame("VCRTS Project");
-	    frame.setSize(300,300);
+	    frame.setSize(500,500);
 	    frame.setVisible(true);
 	    panel = new JPanel();
 	    frame.add(panel);
