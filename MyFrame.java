@@ -128,4 +128,5 @@ public static void createUserButton() { //Beginning creating the user button wit
 
 
 //Save Data in a file
-
+public static void saveFile(String data) throws IOException
+{
