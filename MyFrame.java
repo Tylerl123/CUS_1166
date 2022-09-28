@@ -14,6 +14,7 @@ public class MyFrame extends JFrame implements ActionListener {
   
   public MyFrame(){
     frame = new JFrame();
+    frame.setVisible(true);
     
     
     
