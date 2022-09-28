@@ -47,10 +47,10 @@ public class MyFrame extends JFrame implements ActionListener {
 	JTextField textField2 = new JTextField();
         textField2.setPreferredSize(new Dimension(250,40));
         textField2.setFont(new Font("Consolas",Font.PLAIN,15));
+	panel2.add(label2);
         panel2.add(textField2);
 	frame2.add(panel2);
-	panel2.add(label2);
-	frame2.setSize(300,300);
+	frame2.setSize(500,500);
 	frame2.setVisible(true);	  
   }
 }
