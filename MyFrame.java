@@ -24,6 +24,12 @@ public class MyFrame extends JFrame implements ActionListener {
 	    panel.add(button2);
 	    button.addActionListener(this);
 	    
+		
+	  
+	textField = new JTextField();
+        textField.setPreferredSize(new Dimension(250,40));
+        textField.setFont(new Font("Consolas",Font.PLAIN,15));
+        panel.add(textField);
 
   
 }
