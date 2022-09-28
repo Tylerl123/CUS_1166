@@ -14,6 +14,7 @@ public class MyFrame extends JFrame implements ActionListener {
   
   public MyFrame(){
     frame = new JFrame();
+    frame.setSize(300,300);
     frame.setVisible(true);
     panel = new JPanel();
     frame.add(panel);
