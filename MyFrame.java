@@ -7,7 +7,7 @@ public class MyFrame extends JFrame implements ActionListener {
   
   private JButton button;
   private JButton button2;
-  private static JFrame frame;  ////hrj
+  private static JFrame frame;  ////hrjk
   private JPanel panel;
   private JLabel label;
   private JTextField textField;
