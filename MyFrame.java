@@ -39,12 +39,12 @@ public class MyFrame extends JFrame implements ActionListener {
         @Override 
         public void actionPerformed(ActionEvent e) {
               if(e.getSource()==button) {
-            createFrame();
+                createOwnerButton();
             frame.dispose();
           }
         }
         
-        public static void createFrame() { 
+        public static void createOwnerButton() { 
         
         JFrame frame2 = new JFrame("Owner Login");
         JPanel panel2 = new JPanel();
