@@ -40,6 +40,7 @@ public class MyFrame extends JFrame implements ActionListener {
   public void actionPerformed(ActionEvent e){
         if(e.getSource()==button) {
     	createFrame();
+	frame.dispose();
     }
   }
     public static void createFrame()
