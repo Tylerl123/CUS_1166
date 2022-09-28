@@ -36,29 +36,33 @@ public class MyFrame extends JFrame implements ActionListener {
 
   
 
-  @Override 
-  public void actionPerformed(ActionEvent e){
-        if(e.getSource()==button) {
-    	createFrame();
-	frame.dispose();
-    }
-  }
-    public static void createFrame()
-  { 
-	JFrame frame2 = new JFrame("Owner Login");
-	JPanel panel2 = new JPanel();
-	JLabel label2 = new JLabel("Username");
-	JButton back = new JButton("Back!");
-	JTextField textField2 = new JTextField();
+        @Override 
+        public void actionPerformed(ActionEvent e) {
+              if(e.getSource()==button) {
+            createFrame();
+            frame.dispose();
+          }
+        }
+        
+        public static void createFrame() { 
+        
+        JFrame frame2 = new JFrame("Owner Login");
+        JPanel panel2 = new JPanel();
+        JLabel label2 = new JLabel("Username");
+        JButton back = new JButton("Back!");
+
+        JTextField textField2 = new JTextField();
         textField2.setPreferredSize(new Dimension(250,40));
         textField2.setFont(new Font("Consolas",Font.PLAIN,15));
-	panel2.add(label2);
+        panel2.add(label2);
         panel2.add(textField2);
-	panel2.add(back);
-	frame2.add(panel2);
-	frame2.setSize(500,500);
-	frame2.setVisible(true);	  
-  }
+        panel2.add(back);
+        frame2.add(panel2);
+        frame2.setSize(500,500);
+        frame2.setVisible(true);	  
+        }
+
+        
 }
 
 
