@@ -96,7 +96,7 @@ public class MyFrame extends JFrame implements ActionListener {
 	}
 
 
-public static void createUserButton() { //User login frame
+public static void createUserButton() { //Beginning creating the user button with username
 
 		JFrame frame3 = new JFrame("User Login");
 		JPanel panel3 = new JPanel();
