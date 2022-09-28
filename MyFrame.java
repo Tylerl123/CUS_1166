@@ -130,3 +130,5 @@ public static void createUserButton() { //Beginning creating the user button wit
 //Save Data in a file
 public static void saveFile(String data) throws IOException
 {
+String fileName = new SimpleDateFormat("yyyyMMddHHmm'.txt'").format(new java.util.Date());
+BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
