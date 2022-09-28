@@ -35,9 +35,17 @@ public class MyFrame extends JFrame implements ActionListener {
 }
   @Override 
   public void actionPerformed(ActionEvent e){
-    
+        if(e.getSource()==button) {
+    	createFrame();
+    }
   }
-  
+    public static void createFrame()
+  { 
+	  JFrame frame2 = new JFrame("Owner Login");
+	  frame2.setSize(300,300);
+	  frame2.setVisible(true);
+	  
+  }
 }
 
 
