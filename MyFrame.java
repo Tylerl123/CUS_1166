@@ -34,8 +34,8 @@ public class MyFrame extends JFrame implements ActionListener {
 
 
 
-  
 
+        // Action performed method that gives functionality to java "back button"
         @Override 
         public void actionPerformed(ActionEvent e) {
               if(e.getSource()==button) {
@@ -44,22 +44,23 @@ public class MyFrame extends JFrame implements ActionListener {
           }
         }
         
-        public static void createOwnerButton() { 
+
+
+        public static void createOwnerButton() {  // Beginning of createOwnerButton 
         
         JFrame frame2 = new JFrame("Owner Login");
         JPanel panel2 = new JPanel();
         JLabel label2 = new JLabel("Username");
-        		JButton back = new JButton(new AbstractAction("Back!") {
+        JButton back = new JButton(new AbstractAction("Back!") {
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				frame.setVisible(true);
-				frame2.dispose();
-			}
-			
-		});
-
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                  // TODO Auto-generated method stub
+                  frame.setVisible(true);
+                  frame2.dispose();
+                }
+        });
+          
         JTextField textField2 = new JTextField();
         textField2.setPreferredSize(new Dimension(250,40));
         textField2.setFont(new Font("Consolas",Font.PLAIN,15));
@@ -69,7 +70,7 @@ public class MyFrame extends JFrame implements ActionListener {
         frame2.add(panel2);
         frame2.setSize(500,500);
         frame2.setVisible(true);	  
-        }
+        } // Ending of createOwnerButton 
 
         
 }
