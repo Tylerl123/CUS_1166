@@ -49,7 +49,7 @@ public class MyFrame extends JFrame implements ActionListener {
         JFrame frame2 = new JFrame("Owner Login");
         JPanel panel2 = new JPanel();
         JLabel label2 = new JLabel("Username");
-        		JButton back = new JButton(new AbstractAction("Back!") {
+        		JButton back = new JButton(new AbstractAction("Back!") { //make back button to go to previous window
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
