@@ -30,9 +30,12 @@ public class MyFrame extends JFrame implements ActionListener {
         textField.setPreferredSize(new Dimension(250,40));
         textField.setFont(new Font("Courier New",Font.PLAIN,15));
         panel.add(textField);
+  }
+
+
 
   
-}
+
   @Override 
   public void actionPerformed(ActionEvent e){
         if(e.getSource()==button) {
