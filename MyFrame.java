@@ -37,14 +37,14 @@ public class MyFrame extends JFrame implements ActionListener {
   
 
         @Override 
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) { // create new window for owner to login
               if(e.getSource()==button) {
                 createOwnerButton();
             frame.dispose();
           }
         }
         
-        public static void createOwnerButton() { 
+        public static void createOwnerButton() { //owner login frame
         
         JFrame frame2 = new JFrame("Owner Login");
         JPanel panel2 = new JPanel();
