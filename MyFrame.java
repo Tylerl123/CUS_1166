@@ -19,7 +19,9 @@ public class MyFrame extends JFrame implements ActionListener {
 	    panel = new JPanel();
 	    frame.add(panel);
 	    button = new JButton("Owner");
+	    button2 = new JButton("User");
 	    panel.add(button);
+	    panel.add(button2);
 	    button.addActionListener(this);
 	    
 
