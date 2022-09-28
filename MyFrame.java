@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 public class MyFrame extends JFrame implements ActionListener {
   
-  
   JButton button;
   JButton button2;
   JFrame frame;
@@ -13,7 +12,7 @@ public class MyFrame extends JFrame implements ActionListener {
    
  JTextField textField;
   
-  MyFrame(){
+  public MyFrame(){
     frame = new JFrame();
     
     
