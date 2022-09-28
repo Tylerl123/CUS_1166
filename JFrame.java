@@ -8,11 +8,13 @@ public class MyFrame extends JFrame implements ActionListener {
   
   JButton button;
   JButton button2;
-  
-  
+  JFrame frame;
+  JPanel panel;
+   
  JTextField textField;
   
   MyFrame(){
+    
     
   
   
