@@ -132,3 +132,15 @@ public static void saveFile(String data) throws IOException
 {
 String fileName = new SimpleDateFormat("yyyyMMddHHmm'.txt'").format(new java.util.Date());
 BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+writer.write(data);
+
+
+
+
+
+
+
+
+
+
+
