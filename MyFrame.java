@@ -53,6 +53,7 @@ public class MyFrame extends JFrame implements ActionListener {
         JFrame frame2 = new JFrame("Owner Login");
         JPanel panel2 = new JPanel();
         JLabel label2 = new JLabel("Username");
+	JLabel labelP = new JLabel("Password");
         JButton back = new JButton(new AbstractAction("Back!") {
 
                 @Override
@@ -63,10 +64,19 @@ public class MyFrame extends JFrame implements ActionListener {
         });
           
         JTextField textField2 = new JTextField();
-        textField2.setPreferredSize(new Dimension(250,40));
+        textField2.setPreferredSize(new Dimension(400,40));
         textField2.setFont(new Font("Consolas",Font.PLAIN,15));
+		
+        JPasswordField passTextField = new JPasswordField();
+        passTextField.setPreferredSize(new Dimension(400,40));
+		
+		
         panel2.add(label2);
         panel2.add(textField2);
+		
+	panel2.add(labelP);
+        panel2.add(passTextField);
+		
         panel2.add(back);
         frame2.add(panel2);
         frame2.setSize(500,500);
