@@ -37,7 +37,7 @@ public class MyFrame extends JFrame implements ActionListener {
 
         // Action performed method that gives functionality to java "back button"
         @Override 
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) { // create new window for owner to login
               if(e.getSource()==button) {
                 createOwnerButton();
             frame.dispose();
