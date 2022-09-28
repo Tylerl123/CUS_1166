@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 
 public class MyFrame extends JFrame implements ActionListener {
   
-  JButton button;
-  JButton button2;
-  JFrame frame;
-  JPanel panel;
+  private JButton button;
+  private JButton button2;
+  private JFrame frame;
+  private JPanel panel;
    
  JTextField textField;
   
