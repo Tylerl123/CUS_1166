@@ -73,40 +73,6 @@ public class MyFrame extends JFrame implements ActionListener {
         frame2.setVisible(true);	  
         } // Ending of createOwnerButton 
 
-	        public void actionPerformed1(ActionEvent e) { // User login page
-              if(e.getSource()==button2) {
-                createUserButton();
-            frame.dispose();
-          }
-        }
-
-        public static void createUserButton() { //User login frame
-        
-        JFrame frame3 = new JFrame("User Login");
-        JPanel panel3 = new JPanel();
-        JLabel label3 = new JLabel("Username");
-        		JButton back = new JButton(new AbstractAction("Back!") { //make back button to go to previous window
-
-        			@Override
-        			public void actionPerformed(ActionEvent e) {
-        				// TODO Auto-generated method stub
-        				frame.setVisible(true);
-        				frame3.dispose();
-        			
-        			}
-        		});
-
-        JTextField textField3 = new JTextField();
-        textField3.setPreferredSize(new Dimension(250,40));
-        textField3.setFont(new Font("Consolas",Font.PLAIN,15));
-        panel3.add(label3);
-        panel3.add(textField3);
-        panel3.add(back);
-        frame3.add(panel3);
-        frame3.setSize(500,500);
-        frame3.setVisible(true);
-
-}
 	  class addUserLogin implements ActionListener{
 
 	@Override
