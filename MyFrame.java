@@ -45,16 +45,16 @@ public class MyFrame extends JFrame implements ActionListener {
         @Override 
         public void actionPerformed(ActionEvent e) { // create new window for owner to login
               if(e.getSource()==button) {
-                createOwnerButton();
+                createClientButton();
             frame.dispose();
           }
         }
         
 
 
-        public static void createOwnerButton() {  // Beginning of createOwnerButton 
+        public static void createClientButton() {  // Beginning of createClientButton 
         
-        JFrame frame2 = new JFrame("Owner Login");
+        JFrame frame2 = new JFrame("Client Login");
         JPanel panel2 = new JPanel();
         JLabel label2 = new JLabel("Username");
 	JLabel labelP = new JLabel("Password");
@@ -85,24 +85,24 @@ public class MyFrame extends JFrame implements ActionListener {
         frame2.add(panel2);
         frame2.setSize(500,500);
         frame2.setVisible(true);	  
-        } // Ending of createOwnerButton 
+        } // Ending of createClientButton 
 
-	  class addUserLogin implements ActionListener{
+	  class addOwnerLogin implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub // User login page
 		      if(e.getSource()==button2) {
-		        createUserButton();
+		        createOwnerButton();
 		        frame.dispose();
 		  }
 		}
 	}
 
 
-public static void createUserButton() { //Beginning creating the user button with username
+public static void createOwnerButton() { //Beginning creating the owner button with username
 
-		JFrame frame3 = new JFrame("User Login");
+		JFrame frame3 = new JFrame("Owner Login");
 		JPanel panel3 = new JPanel();
 		JLabel label3 = new JLabel("Username");
 		@SuppressWarnings("serial")
