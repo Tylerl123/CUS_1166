@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 public class MyFrame extends JFrame implements ActionListener {
   
@@ -134,7 +138,7 @@ String fileName = new SimpleDateFormat("yyyyMMddHHmm'.txt'").format(new java.uti
 BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 writer.write(data);
 writer.close();
-Sysmte.out.println("File Saved");
+System.out.println("File Saved");
 
 }
 }
