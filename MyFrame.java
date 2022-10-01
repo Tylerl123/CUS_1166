@@ -22,8 +22,8 @@ public class MyFrame extends JFrame implements ActionListener {
 	    frame.setVisible(true);
 	    panel = new JPanel();
 	    frame.add(panel);
-	    button = new JButton("Owner");
-	    button2 = new JButton("User");
+	    button = new JButton("Rent a vehicle");
+	    button2 = new JButton("Register a Vehicle");
 	    panel.add(button);
 	    panel.add(button2);
 	    button.addActionListener(this);
@@ -34,7 +34,7 @@ public class MyFrame extends JFrame implements ActionListener {
 	  
 	textField = new JTextField();
         textField.setPreferredSize(new Dimension(250,40));
-        textField.setFont(new Font("Courier New",Font.PLAIN,15));		//This is the text field that goes along with the initial frame
+        textField.setFont(new Font("Courier New",Font.PLAIN,15));	//This is the text field that goes along with the initial frame
         panel.add(textField);
   }
 
