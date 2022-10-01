@@ -106,7 +106,10 @@ public class MyFrame extends JFrame implements ActionListener {
         frame2.add(panel2);
         frame2.setSize(500,500);
         frame2.setVisible(true);	  
-        } // Ending of createClientButton 
+        } 
+	
+	
+	
 
 	  class addOwnerLogin implements ActionListener{
 
@@ -126,7 +129,13 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		JFrame frame3 = new JFrame("Owner Login");
 		JPanel panel3 = new JPanel();
 		JLabel label3 = new JLabel("Username");
-		@SuppressWarnings("serial")
+		
+		JLabel labelFN = new JLabel("Full Name");
+		JLabel labelVMake= new JLabel("Vehicle Make");
+		JLabel labelVModel = new JLabel("Vehicle Model");
+		JLabel labelVYear= new JLabel("Vehicle Year");
+		
+	
 		JButton back = new JButton(new AbstractAction("Back!") { //make back button to go to previous window
 
 			@Override
