@@ -164,7 +164,19 @@ public static void createOwnerButton() { //Beginning creating the owner button w
        		textField6.setPreferredSize (new Dimension(450, 40));
 	
 		panel3.add(label3);
+		panel3.add(textField2);
+		
+		panel3.add(labelFN);
 		panel3.add(textField3);
+		
+		panel3.add(labelVMake);
+		panel3.add(textField4);
+		
+		panel3.add(labelVModel);
+		panel3.add(textField5);
+		
+		panel3.add(labelVYear);
+		panel3.add(textField6);
 	
 	
 		panel3.add(back);
