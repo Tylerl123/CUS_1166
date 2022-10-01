@@ -58,6 +58,9 @@ public class MyFrame extends JFrame implements ActionListener {
         JPanel panel2 = new JPanel();
         JLabel label2 = new JLabel("Username");
 	JLabel labelP = new JLabel("Password");
+		  JLabel labelFN = new JLabel("Full Name");
+        JLabel labelTime = new JLabel("Job Duration");
+        JLabel labelDeadline = new JLabel("Deadline");
         JButton back = new JButton(new AbstractAction("Back!") {
 
                 @Override
