@@ -147,11 +147,26 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 			}
 		});
 
-		JTextField textField3 = new JTextField();
-		textField3.setPreferredSize(new Dimension(250,40));
-		textField3.setFont(new Font("Consolas",Font.PLAIN,15));
+		JTextField textField2 = new JTextField();
+		textField2.setPreferredSize(new Dimension(450,40));
+		textField2.setFont(new Font("Consolas",Font.PLAIN,18));
+		
+       	 	JTextField textField3 = new JTextField();
+        	textField3.setPreferredSize (new Dimension(450, 40));
+        
+        	JTextField textField4 = new JTextField();
+        	textField4.setPreferredSize (new Dimension(450, 40));
+        
+        	JTextField textField5 = new JTextField();
+        	textField5.setPreferredSize (new Dimension(450, 40));
+        
+        	JTextField textField6 = new JTextField();
+       		textField6.setPreferredSize (new Dimension(450, 40));
+	
 		panel3.add(label3);
 		panel3.add(textField3);
+	
+	
 		panel3.add(back);
 		frame3.add(panel3);
 		frame3.setSize(500,500);
