@@ -77,12 +77,30 @@ public class MyFrame extends JFrame implements ActionListener {
         JPasswordField passTextField = new JPasswordField();
         passTextField.setPreferredSize(new Dimension(400,40));
 		
+	JTextField textField3 = new JTextField();
+        textField3.setPreferredSize (new Dimension(400, 40));
+        
+        JTextField textField4 = new JTextField();
+        textField4.setPreferredSize (new Dimension(400, 40));
+        
+        JTextField textField5 = new JTextField();
+        textField5.setPreferredSize (new Dimension(400, 40));
+		
 		
         panel2.add(label2);
         panel2.add(textField2);
 		
 	panel2.add(labelP);
         panel2.add(passTextField);
+		
+	panel2.add(labelFN);
+        panel2.add(textField3);
+		
+        panel2.add(labelTime);
+        panel2.add(textField4);
+        
+        panel2.add(labelDeadline);
+        panel2.add(textField5);
 		
         panel2.add(back);
         frame2.add(panel2);
