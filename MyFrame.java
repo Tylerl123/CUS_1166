@@ -22,8 +22,8 @@ public class MyFrame extends JFrame implements ActionListener {
 	    frame.setVisible(true);
 	    panel = new JPanel();
 	    frame.add(panel);
-	    button = new JButton("Rent a vehicle");
-	    button2 = new JButton("Register a Vehicle");
+	    button = new JButton("Rent a vehicle"); //Client rents a vehicle
+	    button2 = new JButton("Register a Vehicle"); //Owner registers a car
 	    panel.add(button);
 	    panel.add(button2);
 	    button.addActionListener(this);
@@ -70,23 +70,23 @@ public class MyFrame extends JFrame implements ActionListener {
                 }
         });
           
-        JTextField textField2 = new JTextField();
+        JTextField textField2 = new JTextField();//textfield for username
         textField2.setPreferredSize(new Dimension(400,40));
         textField2.setFont(new Font("Consolas",Font.PLAIN,15));
 		
-        JPasswordField passTextField = new JPasswordField();
+        JPasswordField passTextField = new JPasswordField();//textfield for password
         passTextField.setPreferredSize(new Dimension(400,40));
 		
-	JTextField textField3 = new JTextField();
+	JTextField textField3 = new JTextField();//textfield for full name
         textField3.setPreferredSize (new Dimension(400, 40));
         
-        JTextField textField4 = new JTextField();
+        JTextField textField4 = new JTextField();//textfield for job duration
         textField4.setPreferredSize (new Dimension(400, 40));
         
-        JTextField textField5 = new JTextField();
+        JTextField textField5 = new JTextField();//textfield for deadline
         textField5.setPreferredSize (new Dimension(400, 40));
 		
-		
+		// labels added to the panel
         panel2.add(label2);
         panel2.add(textField2);
 		
@@ -130,7 +130,7 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		JPanel panel3 = new JPanel();
 		JLabel label3 = new JLabel("Username");
 		
-		JLabel labelFN = new JLabel("Full Name");
+		JLabel labelFN = new JLabel("Full Name");	//Information collected from vehicle owner
 		JLabel labelVMake= new JLabel("Vehicle Make");
 		JLabel labelVModel = new JLabel("Vehicle Model");
 		JLabel labelVYear= new JLabel("Vehicle Year");
@@ -147,22 +147,23 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 			}
 		});
 
-		JTextField textField2 = new JTextField();
+		JTextField textField2 = new JTextField();//textfield for username
 		textField2.setPreferredSize(new Dimension(450,40));
 		textField2.setFont(new Font("Consolas",Font.PLAIN,18));
 		
-       	 	JTextField textField3 = new JTextField();
+       	 	JTextField textField3 = new JTextField();//textfield for fullanem
         	textField3.setPreferredSize (new Dimension(450, 40));
         
-        	JTextField textField4 = new JTextField();
+        	JTextField textField4 = new JTextField();//textfield for vehicle make
         	textField4.setPreferredSize (new Dimension(450, 40));
         
-        	JTextField textField5 = new JTextField();
+        	JTextField textField5 = new JTextField();//textfield for vehicle model
         	textField5.setPreferredSize (new Dimension(450, 40));
         
-        	JTextField textField6 = new JTextField();
+        	JTextField textField6 = new JTextField();//textfield for vehicle year
        		textField6.setPreferredSize (new Dimension(450, 40));
 	
+	//adding each label to the panel created up top
 		panel3.add(label3);
 		panel3.add(textField2);
 		
