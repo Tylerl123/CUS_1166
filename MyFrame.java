@@ -32,7 +32,6 @@ public class MyFrame extends JFrame implements ActionListener {
 	    frame.add(panel);
 	    button = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
 	    button2 = new JButton("Register Vehicle"); //Owner registers a car
-	    panel.setBackground(Color.GRAY);
 	    panel.add(button);
 	    panel.add(button2);
 	    button.addActionListener(this);
@@ -59,7 +58,7 @@ public class MyFrame extends JFrame implements ActionListener {
         JLabel label2 = new JLabel("Username");
         JLabel labelP = new JLabel("Password");
 		JLabel labelFN = new JLabel("Full Name");
-        JLabel labelTime = new JLabel("Job ID");
+        JLabel labelTime = new JLabel("Job Duration");
         JLabel labelDeadline = new JLabel("Deadline");
         JButton back = new JButton(new AbstractAction("Back!") {
 
@@ -140,14 +139,14 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try{
-		            BufferedWriter bw = new BufferedWriter(new FileWriter("OwnerInformation.txt",true));
-		            bw.append("UserName: " + ownerUserName.getText() + "\n");
-		            bw.append("Full Name:  " + ownerFullname.getText() + "\n");
-		            bw.append("Car Make:  " + ownerCarMake.getText() + "\n");
-		            bw.append("Car Model: " + ownerCarModel.getText() + "\n");
-		            bw.append("Car Year: " + ownerCarYear.getText() + "\n");
+		            BufferedWriter ownerLogin = new BufferedWriter(new FileWriter("OwnerInformation.txt",true));
+		            ownerLogin.append("UserName: " + ownerUserName.getText() + "\n");
+		            ownerLogin.append("Full Name:  " + ownerFullname.getText() + "\n");
+		            ownerLogin.append("Car Make:  " + ownerCarMake.getText() + "\n");
+		            ownerLogin.append("Car Model: " + ownerCarModel.getText() + "\n");
+		            ownerLogin.append("Car Year: " + ownerCarYear.getText() + "\n");
 		          
-		            bw.close();
+		            ownerLogin.close();
 		            
 		            
 		        }catch(IOException ex){
