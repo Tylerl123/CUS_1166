@@ -30,6 +30,8 @@ public class MyFrame extends JFrame implements ActionListener {
   public static JTextField ownerCarMake;
   public static JTextField ownerCarModel;
   public static JTextField ownerCarYear;
+  public static JTextField residencyTime;
+
   
   
   public MyFrame(){
@@ -187,7 +189,8 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		JLabel labelFN = new JLabel("Full Name");	//Information collected from vehicle owner
 		JLabel labelVMake= new JLabel("Vehicle Make");
 		JLabel labelVModel = new JLabel("Vehicle Model");
-		JLabel labelVYear= new JLabel("Vehicle Year");				
+		JLabel labelVYear= new JLabel("Vehicle Year");
+		 JLabel labelResTime = new JLabel("Residency Time");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
 		LocalDateTime now = LocalDateTime.now();
 		String DateTimer = (dtf.format(now));
@@ -203,6 +206,8 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		            ownerLogin.append("Car Make:  " + ownerCarMake.getText() + "\n");
 		            ownerLogin.append("Car Model: " + ownerCarModel.getText() + "\n");
 		            ownerLogin.append("Car Year: " + ownerCarYear.getText() + "\n");
+			    ownerLogin.append("Residency Time:" + residencyTime.getText() + "\n");
+
 		            ownerLogin.append(DateTimer + "\n");
 		            ownerLogin.close();
 		            
@@ -240,6 +245,9 @@ public static void createOwnerButton() { //Beginning creating the owner button w
         	ownerCarYear = new JTextField();//textfield for vehicle year
        		ownerCarYear.setPreferredSize (new Dimension(450, 40));
 	
+		residencyTime = new JTextField(); //textfield for residencyTime
+                residencyTime.setPreferredSize(new Dimension(450,40));
+	
 	//adding each label to the panel created up top
 		panel3.add(label3);
 		panel3.add(ownerUserName);
@@ -255,6 +263,9 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		
 		panel3.add(labelVYear);
 		panel3.add(ownerCarYear);
+	
+		panel3.add(labelResTime);
+                panel3.add(residencyTime);
 	
 		panel3.add(enterButton);
 		panel3.add(back);
