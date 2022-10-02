@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MyFrame extends JFrame implements ActionListener {
   
@@ -66,6 +68,10 @@ public class MyFrame extends JFrame implements ActionListener {
 		JLabel labelFN = new JLabel("Full Name");
         JLabel labelTime = new JLabel("Job Duration");
         JLabel labelDeadline = new JLabel("Deadline");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
+		LocalDateTime now = LocalDateTime.now();
+		String DateTimer = (dtf.format(now));
+
         JButton enterButton2 = new JButton(new AbstractAction("Enter!") { //make back button to go to previous window
 
             @Override
@@ -77,6 +83,7 @@ public class MyFrame extends JFrame implements ActionListener {
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
                     bw.append("Client Job Duration " + clientJobDuration.getText() + "\n");
                     bw.append("Client Deadline " + clientDeadline.getText() + "\n");
+                    bw.append(DateTimer + "\n");
 
                     bw.close();
 
@@ -133,10 +140,10 @@ public class MyFrame extends JFrame implements ActionListener {
         panel2.add(label2);
         panel2.add(clientUserName);
 		
-	panel2.add(labelP);
+        panel2.add(labelP);
         panel2.add(clientPassword);
 		
-	panel2.add(labelFN);
+        panel2.add(labelFN);
         panel2.add(clientFullName);
 		
         panel2.add(labelTime);
@@ -178,10 +185,13 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		JLabel labelFN = new JLabel("Full Name");	//Information collected from vehicle owner
 		JLabel labelVMake= new JLabel("Vehicle Make");
 		JLabel labelVModel = new JLabel("Vehicle Model");
-		JLabel labelVYear= new JLabel("Vehicle Year");
+		JLabel labelVYear= new JLabel("Vehicle Year");				
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
+		LocalDateTime now = LocalDateTime.now();
+		String DateTimer = (dtf.format(now));
 
 		JButton enterButton = new JButton(new AbstractAction("Enter!") { //make back button to go to previous window
-
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -191,14 +201,14 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		            ownerLogin.append("Car Make:  " + ownerCarMake.getText() + "\n");
 		            ownerLogin.append("Car Model: " + ownerCarModel.getText() + "\n");
 		            ownerLogin.append("Car Year: " + ownerCarYear.getText() + "\n");
-		          
+		            ownerLogin.append(DateTimer + "\n");
 		            ownerLogin.close();
 		            
 		            
 		        }catch(IOException ex){
 		        	
 		        }
-			
+
 			}
 		});
 		JButton back = new JButton(new AbstractAction("Back!") { //make back button to go to previous window
