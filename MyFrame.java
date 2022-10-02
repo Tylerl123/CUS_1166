@@ -35,7 +35,7 @@ public class MyFrame extends JFrame implements ActionListener {
 	textField = new JTextField();
         textField.setPreferredSize(new Dimension(250,40));
         textField.setFont(new Font("Courier New",Font.PLAIN,15));	//This is the text field that goes along with the initial frame
-        panel.add(textField);
+        
   }
 
 
@@ -201,13 +201,3 @@ System.out.println("File Saved");
 
 }
 }
-
-
-
-
-
-
-
-
-
-
