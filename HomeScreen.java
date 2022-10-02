@@ -8,12 +8,12 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class MyFrame extends JFrame implements ActionListener {
+public class HomeScreen extends JFrame implements ActionListener {
   
   private JButton button;
   private JButton button2;
-  private static  JFrame frame;  
-  private JPanel panel;
+  private static  JFrame HomeScreenFrame;  
+  private JPanel HomeScreenPanel;
   
   public static JTextField clientUserName;
   public static JTextField clientPassword;
@@ -30,32 +30,33 @@ public class MyFrame extends JFrame implements ActionListener {
 
   
   
-  public MyFrame(){
-	    frame = new JFrame("VCRTS Project");  //This creates the initial frame with the owner and user button
-	    frame.setSize(500,500);
-	    frame.setVisible(true);
-	    panel = new JPanel();
-	    panel.setBackground(Color.GRAY);
-	    frame.add(panel);
-	    button = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
-	    button2 = new JButton("Register Vehicle"); //Owner registers a car
-	    panel.add(button);
-	    panel.add(button2);
-	    button.addActionListener(this);
-	    ActionListener ownerLogin = new addOwnerLogin();
-	    button2.addActionListener(ownerLogin);
-	    
-		
-  }
-        // Action performed method that gives functionality to java "back button"
-        @Override 
-        public void actionPerformed(ActionEvent e) { // create new window for owner to login
-              if(e.getSource()==button) {
-                createClientButton();
-                frame.dispose();
-          }
-        }
+    public HomeScreen() {
+        HomeScreenFrame = new JFrame("VCRTS Project");  
+        HomeScreenFrame.setSize(500,500);
+        HomeScreenFrame.setVisible(true);
+        HomeScreenPanel = new JPanel();
+        HomeScreenPanel.setBackground(new Color(60, 116, 181));
+        HomeScreenFrame.add(HomeScreenPanel); // This line has to be after declaring the HomeScreenPanel and setting it's color or else the home screen will be blank
         
+        button = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
+        button2 = new JButton("Register Vehicle"); //Owner registers a car
+        HomeScreenPanel.add(button);
+        HomeScreenPanel.add(button2);
+        button.addActionListener(this);
+        ActionListener ownerLogin = new addOwnerLogin();
+        button2.addActionListener(ownerLogin);
+    }
+
+    
+    // Action performed method that gives functionality to java "back button"
+    @Override 
+    public void actionPerformed(ActionEvent e) { // create new window for owner to login
+            if(e.getSource()==button) {
+            createClientButton();
+            HomeScreenFrame.dispose();
+        }
+    }
+    
 
 
         public static void createClientButton() {  // Beginning of createClientButton 
@@ -98,7 +99,7 @@ public class MyFrame extends JFrame implements ActionListener {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                  frame.setVisible(true);
+                  HomeScreenFrame.setVisible(true);
                   frame2.dispose();
                 }
         });
@@ -166,10 +167,9 @@ class addOwnerLogin implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub // User login page
 		      if(e.getSource()==button2) {
 		        createOwnerButton();
-		        frame.dispose();
+		        HomeScreenFrame.dispose();
 		  }
 		}
 	}
@@ -218,8 +218,7 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				frame.setVisible(true);
+				HomeScreenFrame.setVisible(true);
 				frame3.dispose();
 			
 			}
