@@ -129,6 +129,7 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		JFrame frame3 = new JFrame("Owner Login");
 		JPanel panel3 = new JPanel();
 		JLabel label3 = new JLabel("Username");
+		JButton enterButton = new JButton("Enter");
 		
 		JLabel labelFN = new JLabel("Full Name");	//Information collected from vehicle owner
 		JLabel labelVMake= new JLabel("Vehicle Make");
@@ -179,7 +180,7 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 		panel3.add(labelVYear);
 		panel3.add(textField6);
 	
-	
+		panel3.add(enterButton);
 		panel3.add(back);
 		frame3.add(panel3);
 		frame3.setSize(500,500);
