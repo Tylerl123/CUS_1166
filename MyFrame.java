@@ -3,10 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -16,8 +14,6 @@ public class MyFrame extends JFrame implements ActionListener {
   private JButton button2;
   private static  JFrame frame;  
   private JPanel panel;
-  private JLabel label;
-  private JTextField textField;
   
   public static JTextField clientUserName;
   public static JTextField clientPassword;
