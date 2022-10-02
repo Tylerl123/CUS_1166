@@ -30,8 +30,8 @@ public class MyFrame extends JFrame implements ActionListener {
 	    frame.setVisible(true);
 	    panel = new JPanel();
 	    frame.add(panel);
-	    button = new JButton("Rent a vehicle"); //Client rents a vehicle
-	    button2 = new JButton("Register Vehicle Hardware"); //Owner registers a car
+	    button = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
+	    button2 = new JButton("Register Vehicle"); //Owner registers a car
 	    panel.add(button);
 	    panel.add(button2);
 	    button.addActionListener(this);
