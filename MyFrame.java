@@ -57,6 +57,7 @@ public class MyFrame extends JFrame implements ActionListener {
         JFrame frame2 = new JFrame("Client Login");
         JPanel panel2 = new JPanel();
         JLabel label2 = new JLabel("Username");
+        JButton enterButton2 = new JButton("Enter");
 	JLabel labelP = new JLabel("Password");
 		  JLabel labelFN = new JLabel("Full Name");
         JLabel labelTime = new JLabel("Job Duration");
@@ -102,6 +103,7 @@ public class MyFrame extends JFrame implements ActionListener {
         panel2.add(labelDeadline);
         panel2.add(textField5);
 		
+        panel2.add(enterButton2);
         panel2.add(back);
         frame2.add(panel2);
         frame2.setSize(500,500);
