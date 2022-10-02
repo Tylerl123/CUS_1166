@@ -37,6 +37,7 @@ public class MyFrame extends JFrame implements ActionListener {
 	    frame.setSize(500,500);
 	    frame.setVisible(true);
 	    panel = new JPanel();
+	    panel.setBackground(Color.GRAY);
 	    frame.add(panel);
 	    button = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
 	    button2 = new JButton("Register Vehicle"); //Owner registers a car
@@ -63,6 +64,7 @@ public class MyFrame extends JFrame implements ActionListener {
         
         JFrame frame2 = new JFrame("Client Login");
         JPanel panel2 = new JPanel();
+        panel2.setBackground(Color.CYAN);
         JLabel label2 = new JLabel("Client ID");
         JLabel labelP = new JLabel("Password");
 		JLabel labelFN = new JLabel("Full Name");
