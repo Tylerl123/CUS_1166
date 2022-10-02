@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ImageIcon;
 
 public class HomeScreen extends JFrame implements ActionListener {
   
@@ -36,8 +37,11 @@ public class HomeScreen extends JFrame implements ActionListener {
         HomeScreenFrame.setVisible(true);
         HomeScreenPanel = new JPanel();
         HomeScreenPanel.setBackground(new Color(60, 116, 181));
-        HomeScreenFrame.add(HomeScreenPanel); // This line has to be after declaring the HomeScreenPanel and setting it's color or else the home screen will be blank
+        HomeScreenFrame.add(HomeScreenPanel); // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
         
+        ImageIcon favicon = new ImageIcon("images/MotherBoardIcon.png");
+        HomeScreenFrame.setIconImage(favicon.getImage());
+
         button = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
         button2 = new JButton("Register Vehicle"); //Owner registers a car
         HomeScreenPanel.add(button);
