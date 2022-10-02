@@ -78,7 +78,7 @@ public class MyFrame extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 try{
                     BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
-                    bw.append("UserName: " + clientUserName.getText() + "\n");
+                    bw.append("Client ID: " + clientUserName.getText() + "\n");
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
                     bw.append("Client Job Duration " + clientJobDuration.getText() + "\n");
