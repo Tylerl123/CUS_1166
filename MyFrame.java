@@ -63,7 +63,7 @@ public class MyFrame extends JFrame implements ActionListener {
         
         JFrame frame2 = new JFrame("Client Login");
         JPanel panel2 = new JPanel();
-        JLabel label2 = new JLabel("Username");
+        JLabel label2 = new JLabel("Client ID");
         JLabel labelP = new JLabel("Password");
 		JLabel labelFN = new JLabel("Full Name");
         JLabel labelTime = new JLabel("Job Duration");
@@ -78,7 +78,7 @@ public class MyFrame extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 try{
                     BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
-                    bw.append("Username: " + clientUserName.getText() + "\n");
+                    bw.append("Client ID: " + clientUserName.getText() + "\n");
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
                     bw.append("Client Job Duration " + clientJobDuration.getText() + "\n");
@@ -178,7 +178,7 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 
 		JFrame frame3 = new JFrame("Owner Login");
 		JPanel panel3 = new JPanel();
-		JLabel label3 = new JLabel("Username");
+		JLabel label3 = new JLabel("Owner ID");
 		panel3.setBackground(Color.PINK);
 
 		
@@ -196,7 +196,7 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 			public void actionPerformed(ActionEvent e) {
 				try{
 		            BufferedWriter ownerLogin = new BufferedWriter(new FileWriter("OwnerInformation.txt",true));
-		            ownerLogin.append("UserName: " + ownerUserName.getText() + "\n");
+		            ownerLogin.append("Owner ID: " + ownerUserName.getText() + "\n");
 		            ownerLogin.append("Full Name:  " + ownerFullname.getText() + "\n");
 		            ownerLogin.append("Car Make:  " + ownerCarMake.getText() + "\n");
 		            ownerLogin.append("Car Model: " + ownerCarModel.getText() + "\n");
