@@ -104,37 +104,37 @@ public class MyFrame extends JFrame implements ActionListener {
         });
           
         JTextField textField2 = new JTextField();//textfield for username
-        textField2.setPreferredSize(new Dimension(400,40));
+        textField2.setPreferredSize(new Dimension(450,40));
         textField2.setFont(new Font("Consolas",Font.PLAIN,15));
 		
         JPasswordField passTextField = new JPasswordField();//textfield for password
-        passTextField.setPreferredSize(new Dimension(400,40));
+        passTextField.setPreferredSize(new Dimension(450,40));
 		
         JTextField textField3 = new JTextField();//textfield for full name
-        textField3.setPreferredSize (new Dimension(400, 40));
+        textField3.setPreferredSize (new Dimension(450, 40));
         
         JTextField textField4 = new JTextField();//textfield for job duration
-        textField4.setPreferredSize (new Dimension(400, 40));
+        textField4.setPreferredSize (new Dimension(450, 40));
         
         JTextField textField5 = new JTextField();//textfield for deadline
-        textField5.setPreferredSize (new Dimension(400, 40));
+        textField5.setPreferredSize (new Dimension(450, 40));
 		
 		// labels added to the panel
         clientUserName = new JTextField();//textfield for username
-        clientUserName.setPreferredSize(new Dimension(400,40));
+        clientUserName.setPreferredSize(new Dimension(450,40));
         clientUserName.setFont(new Font("Consolas",Font.PLAIN,15));
 		
         clientPassword = new JPasswordField();//textfield for password
-        clientPassword.setPreferredSize(new Dimension(400,40));
+        clientPassword.setPreferredSize(new Dimension(450,40));
 		
         clientFullName = new JTextField();//textfield for full name
-        clientFullName.setPreferredSize (new Dimension(400, 40));
+        clientFullName.setPreferredSize (new Dimension(450, 40));
         
         clientJobDuration = new JTextField();//textfield for job duration
-        clientJobDuration.setPreferredSize (new Dimension(400, 40));
+        clientJobDuration.setPreferredSize (new Dimension(450, 40));
         
         clientDeadline = new JTextField();//textfield for deadline
-        clientDeadline.setPreferredSize (new Dimension(400, 40));
+        clientDeadline.setPreferredSize (new Dimension(450, 40));
 		
 		// labels added to the panel
         panel2.add(label2);
