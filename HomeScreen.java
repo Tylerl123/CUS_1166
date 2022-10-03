@@ -297,6 +297,5 @@ public static void createOwnerButton() { //Beginning creating the owner button w
 	}
  
 
-//Save Data in a file
 
 }
