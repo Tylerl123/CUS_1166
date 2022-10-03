@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 
 public class HomeScreen extends JFrame implements ActionListener {
@@ -28,6 +30,11 @@ public class HomeScreen extends JFrame implements ActionListener {
   public static JTextField ownerCarModel;
   public static JTextField ownerCarYear;
   public static JTextField residencyTime;
+	
+  public static JLabel TimeLabel;
+  public static SimpleDateFormat TimeFormatter;
+  public static String Time;
+  static JButton enterButton2;
 
   
   
@@ -41,6 +48,12 @@ public class HomeScreen extends JFrame implements ActionListener {
         
         ImageIcon favicon = new ImageIcon("images/MotherBoardIcon.png");
         HomeScreenFrame.setIconImage(favicon.getImage());
+	    
+	TimeLabel = new JLabel();
+	TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
+	Time = TimeFormatter.format(new Date());
+	TimeLabel.setText(Time);
+
 
         button1 = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
         button2 = new JButton("Register Vehicle"); //Owner registers a car
@@ -80,10 +93,15 @@ public class HomeScreen extends JFrame implements ActionListener {
 		LocalDateTime now = LocalDateTime.now();
 		String DateTimer = (dtf.format(now));
 
-        JButton enterButton2 = new JButton(new AbstractAction("Enter!") { //make back button to go to previous window
+          enterButton2 = new JButton(new AbstractAction("Enter!") { //make back button to go to previous window
 
             @Override
             public void actionPerformed(ActionEvent e) {
+	        if(e.getSource() == enterButton2)
+			panel2.add(TimeLabel);
+	             frame2.add(panel2);
+                     frame2.setVisible(true);
+		   
                 try{
                     BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
                     bw.append("Client ID: " + clientUserName.getText() + "\n");
