@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 
 public class HomeScreen extends JFrame implements ActionListener {
   
-  private JButton button;
+  private JButton button1;
   private JButton button2;
   private static  JFrame HomeScreenFrame;  
   private JPanel HomeScreenPanel;
@@ -34,19 +34,22 @@ public class HomeScreen extends JFrame implements ActionListener {
     public HomeScreen() {
         HomeScreenFrame = new JFrame("VCRTS Project");  
         HomeScreenFrame.setSize(500,500);
-        HomeScreenFrame.setVisible(true);
         HomeScreenPanel = new JPanel();
-        HomeScreenPanel.setBackground(new Color(60, 116, 181));
+        HomeScreenPanel.setBackground(new Color(123, 50, 250));
         HomeScreenFrame.add(HomeScreenPanel); // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
+        HomeScreenFrame.setVisible(true);
         
         ImageIcon favicon = new ImageIcon("images/MotherBoardIcon.png");
         HomeScreenFrame.setIconImage(favicon.getImage());
 
-        button = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
+        button1 = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
         button2 = new JButton("Register Vehicle"); //Owner registers a car
-        HomeScreenPanel.add(button);
+        button1.setBackground(new Color(217, 174, 89));
+        button2.setBackground(new Color(217, 174, 89));
+        HomeScreenPanel.add(button1);
         HomeScreenPanel.add(button2);
-        button.addActionListener(this);
+
+        button1.addActionListener(this);
         ActionListener ownerLogin = new addOwnerLogin();
         button2.addActionListener(ownerLogin);
     }
@@ -55,7 +58,7 @@ public class HomeScreen extends JFrame implements ActionListener {
     // Action performed method that gives functionality to java "back button"
     @Override 
     public void actionPerformed(ActionEvent e) { // create new window for owner to login
-            if(e.getSource()==button) {
+            if(e.getSource()==button1) {
             createClientButton();
             HomeScreenFrame.dispose();
         }
