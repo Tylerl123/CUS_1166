@@ -43,8 +43,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         HomeScreenFrame.setSize(500,500);
         HomeScreenPanel = new JPanel();
         HomeScreenPanel.setBackground(new Color(123, 50, 250));
-        HomeScreenFrame.add(HomeScreenPanel); // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
-        HomeScreenFrame.setVisible(true);
+       
         
         ImageIcon favicon = new ImageIcon("images/MotherBoardIcon.png");
         HomeScreenFrame.setIconImage(favicon.getImage());
@@ -61,8 +60,11 @@ public class HomeScreen extends JFrame implements ActionListener {
         button2.setBackground(new Color(217, 174, 89));
         HomeScreenPanel.add(button1);
         HomeScreenPanel.add(button2);
-
-        button1.addActionListener(this);
+	                                     // keep these two lines of codes below add button
+	HomeScreenFrame.add(HomeScreenPanel); // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
+        HomeScreenFrame.setVisible(true);
+        
+	button1.addActionListener(this);
         ActionListener ownerLogin = new addOwnerLogin();
         button2.addActionListener(ownerLogin);
     }
