@@ -52,7 +52,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         HomeScreenPanel.setBackground(new Color(170, 128, 250));
 
 
-        ImageIcon favicon = new ImageIcon("C:\\Users\\Luis\\Downloads\\MotherBoardIcon.png");
+        ImageIcon favicon = new ImageIcon("MotherBoardIcon.png");
 
         HomeScreenFrame.setIconImage(favicon.getImage());
         TimeLabel = new JLabel();
@@ -97,9 +97,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelFN = new JLabel("Full Name");
         JLabel labelTime = new JLabel("Job Duration");
         JLabel labelDeadline = new JLabel("Deadline");
-        //JLabel CarLabel = new JLabel();
-        //ImageIcon Purple = new ImageIcon("C:\\Users\\Luis\\Downloads\\purplecircle.jpg");
-        //CarLabel.setIcon(Purple);
+       
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
         String DateTimer = (dtf.format(now));
@@ -256,7 +254,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelVYear= new JLabel("Vehicle Year");
         JLabel labelResTime = new JLabel("Residency Time");
         JLabel CarLabel = new JLabel();
-        ImageIcon CarImage = new ImageIcon("C:\\Users\\Luis\\Downloads\\Car.png");
+        ImageIcon CarImage = new ImageIcon("Car.png");
         CarLabel.setIcon(CarImage);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
