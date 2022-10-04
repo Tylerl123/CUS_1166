@@ -72,7 +72,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         HomeScreenFrame.setVisible(true);
 
         button1.addActionListener(this);
-        ActionListener ownerLogin = new addOwnerLogin();
+        ActionListener ownerLogin = new RegisterVehiclePage();
         button2.addActionListener(ownerLogin);
     }
 
@@ -208,54 +208,51 @@ public class HomeScreen extends JFrame implements ActionListener {
         frame2.setSize(500,500);
         frame2.setVisible(true);
     }
+//! =========================================================================================================================
 
 
 
 
-    class addOwnerLogin implements ActionListener{
+
+    class RegisterVehiclePage implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource()==button2) {
-                createOwnerButton();
+                RegisterVehicleButton();
 
                 HomeScreenFrame.dispose();
             }
         }
     }
 
-    public static void createOwnerButton() { //Beginning creating the owner button with username
+    public static void RegisterVehicleButton() { //Beginning creating the owner button with username
 
-        JFrame frame3 = new JFrame("Owner Login");
-        frame3.getContentPane().setBackground(new Color(191, 161, 250));
+        JFrame RegisterVehicleFrame = new JFrame("Register Vehicle");
+        RegisterVehicleFrame.getContentPane().setBackground(new Color(191, 161, 250));
 
-        frame3.setSize(500,500);
-       frame3.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
+        RegisterVehicleFrame.setSize(500,500);
+        RegisterVehicleFrame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
 
-       JPanel panel3 = new JPanel();
-        panel3.setPreferredSize(new Dimension(200,700));
-        panel3.setLayout(new FlowLayout());
-        panel3.setBackground(new Color(191,161 , 250));
+        JPanel RegisterVehiclePanel = new JPanel();
+        RegisterVehiclePanel.setPreferredSize(new Dimension(200,700));
+        RegisterVehiclePanel.setBackground(new Color(191,161 , 250));
 
-        JPanel panel4 = new JPanel();
-        panel4.setPreferredSize(new Dimension(200,700));
-        panel4.setLayout(new FlowLayout());
-        panel4.setBackground(new Color(191,161,250));
-
-
-        JLabel label3 = new JLabel("Owner ID");
+        
+        JPanel CarImagePanel = new JPanel(); //? This guy luis made it so he has to create a whole ass panel just to host a tiny image of a car next tom our labels
+        CarImagePanel.setPreferredSize(new Dimension(200,700));
+        CarImagePanel.setBackground(new Color(191,161,250));
 
 
-
-
-        JLabel labelFN = new JLabel("Full Name");	//Information collected from vehicle owner
+        JLabel labelOwnerID = new JLabel("Owner ID");
+        JLabel labelFullName = new JLabel("Full Name");	//Information collected from vehicle owner
         JLabel labelVMake= new JLabel("Vehicle Make");
         JLabel labelVModel = new JLabel("Vehicle Model");
         JLabel labelVYear= new JLabel("Vehicle Year");
         JLabel labelResTime = new JLabel("Residency Time");
         JLabel CarLabel = new JLabel();
-        ImageIcon CarImage = new ImageIcon("images/Car.png"); //! Car image import
-        CarLabel.setIcon(CarImage);
+
+        CarLabel.setIcon(new ImageIcon("images/Car.png"));
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
         String DateTimer = (dtf.format(now));
@@ -288,7 +285,7 @@ public class HomeScreen extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 HomeScreenFrame.setVisible(true);
-                frame3.dispose();
+                RegisterVehicleFrame.dispose();
 
             }
         });
@@ -313,45 +310,45 @@ public class HomeScreen extends JFrame implements ActionListener {
 
         //adding each label to the panel created up top
 
-        panel3.add(label3);
+        RegisterVehiclePanel.add(labelOwnerID);
 
 
-        panel3.add(ownerUserName);
+        RegisterVehiclePanel.add(ownerUserName);
 
-        panel3.add(labelFN);
+        RegisterVehiclePanel.add(labelFullName);
 
-        panel3.add(ownerFullname);
-
-
-        panel3.add(labelVMake);
+        RegisterVehiclePanel.add(ownerFullname);
 
 
-        panel3.add(ownerCarMake);
+        RegisterVehiclePanel.add(labelVMake);
 
 
-
-        panel3.add(labelVModel);
-        panel3.add(ownerCarModel);
+        RegisterVehiclePanel.add(ownerCarMake);
 
 
 
-        panel3.add(labelVYear);
-        panel3.add(ownerCarYear);
+        RegisterVehiclePanel.add(labelVModel);
+        RegisterVehiclePanel.add(ownerCarModel);
 
 
-        panel3.add(labelResTime);
-        panel3.add(residencyTime);
+
+        RegisterVehiclePanel.add(labelVYear);
+        RegisterVehiclePanel.add(ownerCarYear);
 
 
-        panel3.add(enterButton);
-        panel3.add(back);
-        panel4.add(CarLabel);
-
-        frame3.add(panel3);
-        frame3.add(panel4);
+        RegisterVehiclePanel.add(labelResTime);
+        RegisterVehiclePanel.add(residencyTime);
 
 
-        frame3.setVisible(true);
+        RegisterVehiclePanel.add(enterButton);
+        RegisterVehiclePanel.add(back);
+        CarImagePanel.add(CarLabel);
+
+        RegisterVehicleFrame.add(RegisterVehiclePanel);
+        RegisterVehicleFrame.add(CarImagePanel);
+
+
+        RegisterVehicleFrame.setVisible(true);
     }
 
 
