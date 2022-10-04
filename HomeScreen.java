@@ -42,38 +42,40 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 
     public HomeScreen() {
-        HomeScreenFrame = new JFrame("VCRTS Project");
-        HomeScreenFrame.setSize(500,500);
-        HomeScreenPanel = new JPanel();
+            HomeScreenFrame = new JFrame("VCRTS Project");
+            HomeScreenFrame.setSize(500,500);
+            HomeScreenPanel = new JPanel();
 
 
-        HomeScreenPanel.setBackground(new Color(170, 128, 250));
+            HomeScreenPanel.setBackground(new Color(170, 128, 250));
 
 
-        ImageIcon favicon = new ImageIcon("Images/MotherBoardIcon.png");
+            ImageIcon favicon = new ImageIcon("Images/MotherBoardIcon.png");
 
-        HomeScreenFrame.setIconImage(favicon.getImage());
-        TimeLabel = new JLabel();
-        TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
-        Time = TimeFormatter.format(new Date());
-        TimeLabel.setText(Time);
-        button1 = new JButton("Rent Vehicle Hardware"); //Client rents a vehicle
-        button2 = new JButton("Register Vehicle"); //Owner registers a car
-        button1.setBackground(new Color(217, 174, 89));
-        button2.setBackground(new Color(217, 174, 89));
-        HomeScreenPanel.add(button1);
-        HomeScreenPanel.add(button2);
-                                                // keep these two lines of codes below add button
-        HomeScreenFrame.add(HomeScreenPanel);
-        // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
+            HomeScreenFrame.setIconImage(favicon.getImage());
+            TimeLabel = new JLabel();
+            TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
+            Time = TimeFormatter.format(new Date());
+            TimeLabel.setText(Time);
+            button1 = new JButton("Client Registration"); //Client rents a vehicle
+            button2 = new JButton("Vehicle Registration"); //Owner registers a car
+            button1.setBackground(new Color(217, 174, 89));
+            button2.setBackground(new Color(217, 174, 89));
+            HomeScreenPanel.add(button1);
+            HomeScreenPanel.add(button2);
+                                                    // keep these two lines of codes below add button
+            HomeScreenFrame.add(HomeScreenPanel);
+            // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
 
-        HomeScreenFrame.setVisible(true);
+            HomeScreenFrame.setVisible(true);
+            
+            button1.addActionListener(this); 
 
-        button1.addActionListener(this);
-        ActionListener ownerLogin = new RegisterVehiclePage();
-        button2.addActionListener(ownerLogin);
+            ActionListener ownerLogin = new VehicleRegistrationPage();  
+            button2.addActionListener(ownerLogin);
     }
 
+    
     // Action performed method that gives functionality to java "back button"
     @Override
     public void actionPerformed(ActionEvent e) { // create new window for owner to login
@@ -89,7 +91,6 @@ public class HomeScreen extends JFrame implements ActionListener {
         JFrame frame2 = new JFrame("Client Login");
         JPanel panel2 = new JPanel();
         panel2.setBackground(new Color(170, 128, 252));
-        JPanel panel3 = new JPanel();
         JLabel label2 = new JLabel("Client ID");
         JLabel labelP = new JLabel("Password");
         JLabel labelFN = new JLabel("Full Name");
@@ -206,13 +207,16 @@ public class HomeScreen extends JFrame implements ActionListener {
         frame2.setSize(500,500);
         frame2.setVisible(true);
     }
-//! =========================================================================================================================
 
+
+
+
+//! ============================================================================================================================================================================
 
 
 
     //! Nested class containing the method for button 2's functionality
-    class RegisterVehiclePage implements ActionListener {  
+    class VehicleRegistrationPage implements ActionListener {  
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -227,7 +231,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
     public static void RegisterVehicleButton() { 
 
-                JFrame RegisterVehicleFrame = new JFrame("Register Vehicle");
+                JFrame RegisterVehicleFrame = new JFrame("Vehicle registration and owner login");
                 RegisterVehicleFrame.getContentPane().setBackground(new Color(191, 161, 250));
 
                 RegisterVehicleFrame.setSize(500,500);
