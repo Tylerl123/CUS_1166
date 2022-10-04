@@ -52,7 +52,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         HomeScreenPanel.setBackground(new Color(170, 128, 250));
 
 
-        ImageIcon favicon = new ImageIcon("MotherBoardIcon.png");
+        ImageIcon favicon = new ImageIcon("Images/MotherBoardIcon.png");
 
         HomeScreenFrame.setIconImage(favicon.getImage());
         TimeLabel = new JLabel();
