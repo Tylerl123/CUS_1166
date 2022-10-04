@@ -142,23 +142,6 @@ public class HomeScreen extends JFrame implements ActionListener {
                 frame2.dispose();
             }
         });
-
-        JTextField textField2 = new JTextField();//textfield for username
-        textField2.setPreferredSize(new Dimension(450,40));
-        textField2.setFont(new Font("Consolas",Font.PLAIN,15));
-
-        JPasswordField passTextField = new JPasswordField();//textfield for password
-        passTextField.setPreferredSize(new Dimension(450,40));
-
-        JTextField textField3 = new JTextField();//textfield for full name
-        textField3.setPreferredSize (new Dimension(450, 40));
-
-        JTextField textField4 = new JTextField();//textfield for job duration
-        textField4.setPreferredSize (new Dimension(450, 40));
-
-        JTextField textField5 = new JTextField();//textfield for deadline
-        textField5.setPreferredSize (new Dimension(450, 40));
-
         // labels added to the panel
         clientUserName = new JTextField();//textfield for username
         clientUserName.setPreferredSize(new Dimension(450,40));
