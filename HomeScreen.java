@@ -254,7 +254,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelVYear= new JLabel("Vehicle Year");
         JLabel labelResTime = new JLabel("Residency Time");
         JLabel CarLabel = new JLabel();
-        ImageIcon CarImage = new ImageIcon("Car.png");
+        ImageIcon CarImage = new ImageIcon("images/Car.png"); //! Car image import
         CarLabel.setIcon(CarImage);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
