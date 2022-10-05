@@ -1,9 +1,9 @@
 /* Project:  Milestone 2
-* Class: HomeScreen.java 
-* Author:   Ryan Doyle, Luis Guarin, Tyler Logan, Dondre Campbell, Shafin Ahmed
-* Date: October 4, 2022 
-* This program creates the gui that has 2 buttons that leads to 2 new frames where the user enters in info and submits info into a txt
-*/ 
+ * Class: HomeScreen.java
+ * Author:   Ryan Doyle, Luis Guarin, Tyler Logan, Dondre Campbell, Shafin Ahmed
+ * Date: October 4, 2022
+ * This program creates the gui that has 2 buttons that leads to 2 new frames where the user enters in info and submits info into a txt
+ */
 
 
 
@@ -53,40 +53,40 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 
     public HomeScreen() {
-            HomeScreenFrame = new JFrame("VCRTS Project");
-            HomeScreenFrame.setSize(500,500);
-            HomeScreenPanel = new JPanel();
+        HomeScreenFrame = new JFrame("VCRTS Project");
+        HomeScreenFrame.setSize(500,500);
+        HomeScreenPanel = new JPanel();
 
 
-            HomeScreenPanel.setBackground(new Color(170, 128, 250));
+        HomeScreenPanel.setBackground(new Color(170, 128, 250));
 
 
-            ImageIcon favicon = new ImageIcon("Images/MotherBoardIcon.png");
+        ImageIcon favicon = new ImageIcon("Images/MotherBoardIcon.png");
 
-            HomeScreenFrame.setIconImage(favicon.getImage());
-            TimeLabel = new JLabel();
-            TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
-            Time = TimeFormatter.format(new Date());
-            TimeLabel.setText(Time);
-            button1 = new JButton("Client Registration"); //Client rents a vehicle
-            button2 = new JButton("Vehicle Registration"); //Owner registers a car
-            button1.setBackground(new Color(217, 174, 89));
-            button2.setBackground(new Color(217, 174, 89));
-            HomeScreenPanel.add(button1);
-            HomeScreenPanel.add(button2);
-                                                    // keep these two lines of codes below add button
-            HomeScreenFrame.add(HomeScreenPanel);
-            // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
+        HomeScreenFrame.setIconImage(favicon.getImage());
+        TimeLabel = new JLabel();
+        TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
+        Time = TimeFormatter.format(new Date());
+        TimeLabel.setText(Time);
+        button1 = new JButton("Client Registration"); //Client rents a vehicle
+        button2 = new JButton("Vehicle Registration"); //Owner registers a car
+        button1.setBackground(new Color(217, 174, 89));
+        button2.setBackground(new Color(217, 174, 89));
+        HomeScreenPanel.add(button1);
+        HomeScreenPanel.add(button2);
+        // keep these two lines of codes below add button
+        HomeScreenFrame.add(HomeScreenPanel);
+        // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
 
-            HomeScreenFrame.setVisible(true);
-            
-            button1.addActionListener(this); 
+        HomeScreenFrame.setVisible(true);
 
-            ActionListener ownerLogin = new VehicleRegistrationPage();  
-            button2.addActionListener(ownerLogin);
+        button1.addActionListener(this);
+
+        ActionListener ownerLogin = new VehicleRegistrationPage();
+        button2.addActionListener(ownerLogin);
     }
 
-    
+
     // Action performed method that gives functionality to java "back button"
     @Override
     public void actionPerformed(ActionEvent e) { // create new window for owner to login
@@ -98,21 +98,21 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 
     public static void createClientButton() {  // Beginning of createClientButton
-    	
+
         JFrame frame2 = new JFrame("Client Login");
-        
+
         frame2.getContentPane().setBackground(new Color(191, 161, 250));
         frame2.setBackground(new Color(170, 128, 252));
-        
+
         frame2.setSize(500,500);
-        frame2.setLayout(new FlowLayout(FlowLayout.CENTER,20,20)); 
-        
+        frame2.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
+
         JPanel panel2 = new JPanel();
         frame2.add(panel2);
-        
+
         panel2.setPreferredSize(new Dimension(200,700));
         panel2.setBackground(new Color(191,161 , 250));
-        
+
         JPanel CarImagePanel2 = new JPanel(); //? This guy luis made it so he has to create a whole ass panel just to host a tiny image of a car next tom our labels
         CarImagePanel2.setPreferredSize(new Dimension(200,700));
         CarImagePanel2.setBackground(new Color(191,161,250));
@@ -123,7 +123,8 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelTime = new JLabel("Job Duration");
         JLabel labelDeadline = new JLabel("Deadline");
         JLabel CarLabel2 = new JLabel();
-       
+        CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
+
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
         String DateTimer = (dtf.format(now));
@@ -133,12 +134,11 @@ public class HomeScreen extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == enterButton2)
                     panel2.add(TimeLabel);
-                
                 frame2.setVisible(true);
 
                 try{
-                	
-                	BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
+
+                    BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
                     bw.append("Client ID: " + clientUserName.getText() + "\n");
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
@@ -184,7 +184,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JobID = random.nextInt(10000000)+1;
         panel2.add(enterButton2);
         panel2.add(back);
-       
+
         // labels added to the panel
 
         panel2.add(label2);
@@ -201,15 +201,16 @@ public class HomeScreen extends JFrame implements ActionListener {
 
         panel2.add(labelDeadline);
         panel2.add(clientDeadline);
+        CarImagePanel2.add(CarLabel2);
         enterButton2.setBackground(new Color(217, 174, 89));
         back.setBackground(new Color(217, 174, 89));
-       
+
         frame2.add(CarImagePanel2);
-        CarImagePanel2.add(CarLabel2);
-       
+
+
         panel2.add(enterButton2);
         panel2.add(back);
-       
+
         frame2.setVisible(true);
     }
 
@@ -221,7 +222,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 
     //! Nested class containing the method for button 2's functionality
-    class VehicleRegistrationPage implements ActionListener {  
+    class VehicleRegistrationPage implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -234,120 +235,119 @@ public class HomeScreen extends JFrame implements ActionListener {
     }
 
 
-    public static void RegisterVehicleButton() { 
+    public static void RegisterVehicleButton() {
 
-                JFrame RegisterVehicleFrame = new JFrame("Vehicle registration and owner login");
-                RegisterVehicleFrame.getContentPane().setBackground(new Color(191, 161, 250));
+        JFrame RegisterVehicleFrame = new JFrame("Vehicle registration and owner login");
+        RegisterVehicleFrame.getContentPane().setBackground(new Color(191, 161, 250));
 
-                RegisterVehicleFrame.setSize(500,500);
-                RegisterVehicleFrame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
+        RegisterVehicleFrame.setSize(500,500);
+        RegisterVehicleFrame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
 
-                JPanel RegisterVehiclePanel = new JPanel();
-                RegisterVehiclePanel.setPreferredSize(new Dimension(200,700));
-                RegisterVehiclePanel.setBackground(new Color(191,161 , 250));
-
-                
-                JPanel CarImagePanel = new JPanel(); //? This guy luis made it so he has to create a whole ass panel just to host a tiny image of a car next tom our labels
-                CarImagePanel.setPreferredSize(new Dimension(200,700));
-                CarImagePanel.setBackground(new Color(191,161,250));
+        JPanel RegisterVehiclePanel = new JPanel();
+        RegisterVehiclePanel.setPreferredSize(new Dimension(200,700));
+        RegisterVehiclePanel.setBackground(new Color(191,161 , 250));
 
 
-                JLabel labelOwnerID = new JLabel("Owner ID");
-                JLabel labelFullName = new JLabel("Full Name");	
-                JLabel labelVMake= new JLabel("Vehicle Make");
-                JLabel labelVModel = new JLabel("Vehicle Model");
-                JLabel labelVYear= new JLabel("Vehicle Year");
-                JLabel labelResTime = new JLabel("Residency Time");
-                JLabel CarLabel = new JLabel();
-
-                CarLabel.setIcon(new ImageIcon("images/Car.png"));
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
-                LocalDateTime now = LocalDateTime.now();
-                String DateTimer = (dtf.format(now));
+        JPanel CarImagePanel = new JPanel(); //? This guy luis made it so he has to create a whole ass panel just to host a tiny image of a car next tom our labels
+        CarImagePanel.setPreferredSize(new Dimension(200,700));
+        CarImagePanel.setBackground(new Color(191,161,250));
 
 
-                            //! Enter Button initialization
-                            JButton enterButton = new JButton(new AbstractAction("Enter") { 
+        JLabel labelOwnerID = new JLabel("Owner ID");
+        JLabel labelFullName = new JLabel("Full Name");
+        JLabel labelVMake= new JLabel("Vehicle Make");
+        JLabel labelVModel = new JLabel("Vehicle Model");
+        JLabel labelVYear= new JLabel("Vehicle Year");
+        JLabel labelResTime = new JLabel("Residency Time");
+        JLabel CarLabel = new JLabel();
 
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    try{
-                                        BufferedWriter ownerLogin = new BufferedWriter(new FileWriter("OwnerInformation.txt",true));
-                                        ownerLogin.append("Owner ID: " + ownerID.getText() + "\n");
-                                        ownerLogin.append("Full Name:  " + ownerFullname.getText() + "\n");
-                                        ownerLogin.append("Car Make:  " + ownerCarMake.getText() + "\n");
-                                        ownerLogin.append("Car Model: " + ownerCarModel.getText() + "\n");
-                                        ownerLogin.append("Car Year: " + ownerCarYear.getText() + "\n");
-                                        ownerLogin.append("Residency Time:" + residencyTime.getText() + "\n");
-
-                                        ownerLogin.append(DateTimer + "\n");
-                                        ownerLogin.close();
-
-                                    }catch(IOException ex){}
-                                }
-                            });
+        CarLabel.setIcon(new ImageIcon("Images/Car.png"));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
+        LocalDateTime now = LocalDateTime.now();
+        String DateTimer = (dtf.format(now));
 
 
-                            //! Back button initialization
-                            JButton backButton = new JButton(new AbstractAction("Back") { 
+        //! Enter Button initialization
+        JButton enterButton = new JButton(new AbstractAction("Enter") {
 
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    HomeScreenFrame.setVisible(true);
-                                    RegisterVehicleFrame.dispose();
-                                }
-                            });
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    BufferedWriter ownerLogin = new BufferedWriter(new FileWriter("OwnerInformation.txt",true));
+                    ownerLogin.append("Owner ID: " + ownerID.getText() + "\n");
+                    ownerLogin.append("Full Name:  " + ownerFullname.getText() + "\n");
+                    ownerLogin.append("Car Make:  " + ownerCarMake.getText() + "\n");
+                    ownerLogin.append("Car Model: " + ownerCarModel.getText() + "\n");
+                    ownerLogin.append("Car Year: " + ownerCarYear.getText() + "\n");
+                    ownerLogin.append("Residency Time:" + residencyTime.getText() + "\n");
 
-                enterButton.setBackground(new Color(217, 174, 89));
-                backButton.setBackground(new Color(217, 174, 89));
-                
-                ownerID = new JTextField();//textfield for ownerID 
-                ownerID.setPreferredSize(new Dimension(150,20));
+                    ownerLogin.append(DateTimer + "\n");
+                    ownerLogin.close();
 
-                ownerFullname = new JTextField();//textfield for fullname
-                ownerFullname.setPreferredSize (new Dimension(150, 20));
-
-                ownerCarMake = new JTextField();//textfield for vehicle make
-                ownerCarMake.setPreferredSize (new Dimension(150, 20));
-
-                ownerCarModel = new JTextField();//textfield for vehicle model
-                ownerCarModel.setPreferredSize (new Dimension(150, 20));
-
-                ownerCarYear = new JTextField();//textfield for vehicle year
-                ownerCarYear.setPreferredSize (new Dimension(150, 20));
-
-                residencyTime = new JTextField(); //textfield for residencyTime
-                residencyTime.setPreferredSize(new Dimension(150,20));
+                }catch(IOException ex){}
+            }
+        });
 
 
-                //! added each label to the panel created up top
-                RegisterVehiclePanel.add(labelOwnerID);
-                RegisterVehiclePanel.add(ownerID);
-                
-                RegisterVehiclePanel.add(labelFullName);
-                RegisterVehiclePanel.add(ownerFullname);
-               
-                RegisterVehiclePanel.add(labelVMake);
-                RegisterVehiclePanel.add(ownerCarMake);
-                
-                RegisterVehiclePanel.add(labelVModel);
-                RegisterVehiclePanel.add(ownerCarModel);
-               
-                RegisterVehiclePanel.add(labelVYear);
-                RegisterVehiclePanel.add(ownerCarYear);
-               
-                RegisterVehiclePanel.add(labelResTime);
-                RegisterVehiclePanel.add(residencyTime);
-               
-                RegisterVehiclePanel.add(enterButton);
-                RegisterVehiclePanel.add(backButton);
-                
-                RegisterVehicleFrame.add(RegisterVehiclePanel);
-                RegisterVehicleFrame.add(CarImagePanel);
-                CarImagePanel.add(CarLabel);
+        //! Back button initialization
+        JButton backButton = new JButton(new AbstractAction("Back") {
 
-                RegisterVehicleFrame.setVisible(true);
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HomeScreenFrame.setVisible(true);
+                RegisterVehicleFrame.dispose();
+            }
+        });
+
+        enterButton.setBackground(new Color(217, 174, 89));
+        backButton.setBackground(new Color(217, 174, 89));
+
+        ownerID = new JTextField();//textfield for ownerID
+        ownerID.setPreferredSize(new Dimension(150,20));
+
+        ownerFullname = new JTextField();//textfield for fullname
+        ownerFullname.setPreferredSize (new Dimension(150, 20));
+
+        ownerCarMake = new JTextField();//textfield for vehicle make
+        ownerCarMake.setPreferredSize (new Dimension(150, 20));
+
+        ownerCarModel = new JTextField();//textfield for vehicle model
+        ownerCarModel.setPreferredSize (new Dimension(150, 20));
+
+        ownerCarYear = new JTextField();//textfield for vehicle year
+        ownerCarYear.setPreferredSize (new Dimension(150, 20));
+
+        residencyTime = new JTextField(); //textfield for residencyTime
+        residencyTime.setPreferredSize(new Dimension(150,20));
+
+
+        //! added each label to the panel created up top
+        RegisterVehiclePanel.add(labelOwnerID);
+        RegisterVehiclePanel.add(ownerID);
+
+        RegisterVehiclePanel.add(labelFullName);
+        RegisterVehiclePanel.add(ownerFullname);
+
+        RegisterVehiclePanel.add(labelVMake);
+        RegisterVehiclePanel.add(ownerCarMake);
+
+        RegisterVehiclePanel.add(labelVModel);
+        RegisterVehiclePanel.add(ownerCarModel);
+
+        RegisterVehiclePanel.add(labelVYear);
+        RegisterVehiclePanel.add(ownerCarYear);
+
+        RegisterVehiclePanel.add(labelResTime);
+        RegisterVehiclePanel.add(residencyTime);
+
+        RegisterVehiclePanel.add(enterButton);
+        RegisterVehiclePanel.add(backButton);
+
+        RegisterVehicleFrame.add(RegisterVehiclePanel);
+        RegisterVehicleFrame.add(CarImagePanel);
+        CarImagePanel.add(CarLabel);
+
+        RegisterVehicleFrame.setVisible(true);
     }
 }
-
 
