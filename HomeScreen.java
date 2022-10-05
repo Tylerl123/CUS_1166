@@ -80,9 +80,9 @@ public class HomeScreen extends JFrame implements ActionListener {
 
         HomeScreenFrame.setVisible(true);
 
-        button1.addActionListener(this);
+        button1.addActionListener(this); // This line is helping this class implementing the action listener
 
-        ActionListener ownerLogin = new VehicleRegistrationPage();
+        ActionListener ownerLogin = new VehicleRegistrationPage(); // For the 2nd button we had to make a 2nd class for the action listener to make it functional
         button2.addActionListener(ownerLogin);
     }
 
