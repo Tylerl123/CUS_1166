@@ -87,15 +87,31 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 
     public static void createClientButton() {  // Beginning of createClientButton
-
+    	
         JFrame frame2 = new JFrame("Client Login");
+        
+        frame2.getContentPane().setBackground(new Color(191, 161, 250));
+        frame2.setBackground(new Color(170, 128, 252));
+        
+        frame2.setSize(500,500);
+        frame2.setLayout(new FlowLayout(FlowLayout.CENTER,20,20)); 
+        
         JPanel panel2 = new JPanel();
-        panel2.setBackground(new Color(170, 128, 252));
+        frame2.add(panel2);
+        
+        panel2.setPreferredSize(new Dimension(200,700));
+        panel2.setBackground(new Color(191,161 , 250));
+        
+        JPanel CarImagePanel2 = new JPanel(); //? This guy luis made it so he has to create a whole ass panel just to host a tiny image of a car next tom our labels
+        CarImagePanel2.setPreferredSize(new Dimension(200,700));
+        CarImagePanel2.setBackground(new Color(191,161,250));
+
         JLabel label2 = new JLabel("Client ID");
         JLabel labelP = new JLabel("Password");
         JLabel labelFN = new JLabel("Full Name");
         JLabel labelTime = new JLabel("Job Duration");
         JLabel labelDeadline = new JLabel("Deadline");
+        JLabel CarLabel2 = new JLabel();
        
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
@@ -110,10 +126,8 @@ public class HomeScreen extends JFrame implements ActionListener {
                 frame2.setVisible(true);
 
                 try{
-
-
-
-                    BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
+                	
+                	BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
                     bw.append("Client ID: " + clientUserName.getText() + "\n");
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
@@ -123,10 +137,6 @@ public class HomeScreen extends JFrame implements ActionListener {
                     bw.append(DateTimer + "\n");
 
                     bw.close();
-
-
-
-
 
                 }catch(IOException ex){
 
@@ -144,25 +154,26 @@ public class HomeScreen extends JFrame implements ActionListener {
         });
         // labels added to the panel
         clientUserName = new JTextField();//textfield for username
-        clientUserName.setPreferredSize(new Dimension(450,40));
+        clientUserName.setPreferredSize(new Dimension(150,20));
         clientUserName.setFont(new Font("Consolas",Font.PLAIN,15));
 
         clientPassword = new JPasswordField();//textfield for password
-        clientPassword.setPreferredSize(new Dimension(450,40));
+        clientPassword.setPreferredSize(new Dimension(150,20));
 
         clientFullName = new JTextField();//textfield for full name
-        clientFullName.setPreferredSize (new Dimension(450, 40));
+        clientFullName.setPreferredSize (new Dimension(150, 20));
 
         clientJobDuration = new JTextField();//textfield for job duration
-        clientJobDuration.setPreferredSize (new Dimension(450, 40));
+        clientJobDuration.setPreferredSize (new Dimension(150, 20));
 
         clientDeadline = new JTextField();//textfield for deadline
-        clientDeadline.setPreferredSize (new Dimension(450, 40));
+        clientDeadline.setPreferredSize (new Dimension(150, 20));
 
         Random random = new Random();
         JobID = random.nextInt(10000000)+1;
-
-
+        panel2.add(enterButton2);
+        panel2.add(back);
+       
         // labels added to the panel
 
         panel2.add(label2);
@@ -181,13 +192,13 @@ public class HomeScreen extends JFrame implements ActionListener {
         panel2.add(clientDeadline);
         enterButton2.setBackground(new Color(217, 174, 89));
         back.setBackground(new Color(217, 174, 89));
-
+       
+        frame2.add(CarImagePanel2);
+        CarImagePanel2.add(CarLabel2);
+       
         panel2.add(enterButton2);
         panel2.add(back);
-
-        frame2.add(panel2);
-
-        frame2.setSize(500,500);
+       
         frame2.setVisible(true);
     }
 
@@ -276,7 +287,9 @@ public class HomeScreen extends JFrame implements ActionListener {
                                 }
                             });
 
-
+                enterButton.setBackground(new Color(217, 174, 89));
+                backButton.setBackground(new Color(217, 174, 89));
+                
                 ownerID = new JTextField();//textfield for ownerID 
                 ownerID.setPreferredSize(new Dimension(150,20));
 
@@ -299,18 +312,25 @@ public class HomeScreen extends JFrame implements ActionListener {
                 //! added each label to the panel created up top
                 RegisterVehiclePanel.add(labelOwnerID);
                 RegisterVehiclePanel.add(ownerID);
+                
                 RegisterVehiclePanel.add(labelFullName);
                 RegisterVehiclePanel.add(ownerFullname);
+               
                 RegisterVehiclePanel.add(labelVMake);
                 RegisterVehiclePanel.add(ownerCarMake);
+                
                 RegisterVehiclePanel.add(labelVModel);
                 RegisterVehiclePanel.add(ownerCarModel);
+               
                 RegisterVehiclePanel.add(labelVYear);
                 RegisterVehiclePanel.add(ownerCarYear);
+               
                 RegisterVehiclePanel.add(labelResTime);
                 RegisterVehiclePanel.add(residencyTime);
+               
                 RegisterVehiclePanel.add(enterButton);
                 RegisterVehiclePanel.add(backButton);
+                
                 RegisterVehicleFrame.add(RegisterVehiclePanel);
                 RegisterVehicleFrame.add(CarImagePanel);
                 CarImagePanel.add(CarLabel);
@@ -318,4 +338,5 @@ public class HomeScreen extends JFrame implements ActionListener {
                 RegisterVehicleFrame.setVisible(true);
     }
 }
+
 
