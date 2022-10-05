@@ -121,7 +121,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelP = new JLabel("Password");
         JLabel labelFN = new JLabel("Full Name");
         JLabel labelTime = new JLabel("Job Duration (Hours)");
-        JLabel labelDeadline = new JLabel("Deadline");
+        JLabel labelDeadline = new JLabel("Deadline (Hours)");
         JLabel CarLabel2 = new JLabel();
         CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
 
@@ -143,7 +143,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
                     bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
-                    bw.append("Client Deadline " + clientDeadline.getText() + "\n");
+                    bw.append("Client Deadline " + clientDeadline.getText() + " hours " + \n");
                     bw.append("Job ID:" + JobID + "\n");
                     bw.append(DateTimer + "\n");
 
