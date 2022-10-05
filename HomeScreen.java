@@ -143,7 +143,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
                     bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
-                    bw.append("Client Deadline " + clientDeadline.getText() + " hours " + \n");
+                    bw.append("Client Deadline " + clientDeadline.getText() + " hours " + "\n");
                     bw.append("Job ID:" + JobID + "\n");
                     bw.append(DateTimer + "\n");
 
