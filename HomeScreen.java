@@ -1,3 +1,14 @@
+/* Project:  Milestone 2
+* Class: HomeScreen.java 
+* Author:   Ryan Doyle, Luis Guarin, Tyler Logan, Dondre Campbell, Shafin Ahmed
+* Date: October 4, 2022 
+* This program creates the gui that has 2 buttons that leads to 2 new frames where the user enters in info and submits info into a txt
+*/ 
+
+
+
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
