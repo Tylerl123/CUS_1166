@@ -113,7 +113,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         panel2.setPreferredSize(new Dimension(200,700));
         panel2.setBackground(new Color(191,161 , 250));
 
-        JPanel CarImagePanel2 = new JPanel(); //? This guy luis made it so he has to create a whole ass panel just to host a tiny image of a car next tom our labels
+        JPanel CarImagePanel2 = new JPanel(); //? made panel to hold car image label
         CarImagePanel2.setPreferredSize(new Dimension(200,700));
         CarImagePanel2.setBackground(new Color(191,161,250));
 
