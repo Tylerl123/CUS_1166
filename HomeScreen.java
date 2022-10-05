@@ -120,7 +120,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel label2 = new JLabel("Client ID");
         JLabel labelP = new JLabel("Password");
         JLabel labelFN = new JLabel("Full Name");
-        JLabel labelTime = new JLabel("Job Duration");
+        JLabel labelTime = new JLabel("Job Duration (Hours)");
         JLabel labelDeadline = new JLabel("Deadline");
         JLabel CarLabel2 = new JLabel();
         CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
@@ -142,7 +142,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                     bw.append("Client ID: " + clientUserName.getText() + "\n");
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
-                    bw.append("Client Job Duration " + clientJobDuration.getText() + "\n");
+                    bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
                     bw.append("Client Deadline " + clientDeadline.getText() + "\n");
                     bw.append("Job ID:" + JobID + "\n");
                     bw.append(DateTimer + "\n");
@@ -248,7 +248,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         RegisterVehiclePanel.setBackground(new Color(191,161 , 250));
 
 
-        JPanel CarImagePanel = new JPanel(); //? This guy luis made it so he has to create a whole ass panel just to host a tiny image of a car next tom our labels
+        JPanel CarImagePanel = new JPanel(); 
         CarImagePanel.setPreferredSize(new Dimension(200,700));
         CarImagePanel.setBackground(new Color(191,161,250));
 
@@ -258,7 +258,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelVMake= new JLabel("Vehicle Make");
         JLabel labelVModel = new JLabel("Vehicle Model");
         JLabel labelVYear= new JLabel("Vehicle Year");
-        JLabel labelResTime = new JLabel("Residency Time");
+        JLabel labelResTime = new JLabel("Residency Time (Hours)");
         JLabel CarLabel = new JLabel();
 
         CarLabel.setIcon(new ImageIcon("Images/Car.png"));
@@ -279,7 +279,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                     ownerLogin.append("Car Make:  " + ownerCarMake.getText() + "\n");
                     ownerLogin.append("Car Model: " + ownerCarModel.getText() + "\n");
                     ownerLogin.append("Car Year: " + ownerCarYear.getText() + "\n");
-                    ownerLogin.append("Residency Time:" + residencyTime.getText() + "\n");
+                    ownerLogin.append("Residency Time:" + residencyTime.getText() + " hours " + "\n");
 
                     ownerLogin.append(DateTimer + "\n");
                     ownerLogin.close();
