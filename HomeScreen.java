@@ -80,9 +80,9 @@ public class HomeScreen extends JFrame implements ActionListener {
 
         HomeScreenFrame.setVisible(true);
 
-        button1.addActionListener(this); // This line is helping this class implementing the action listener
+        button1.addActionListener(this);
 
-        ActionListener ownerLogin = new VehicleRegistrationPage(); // For the 2nd button we had to make a 2nd class for the action listener to make it functional
+        ActionListener ownerLogin = new VehicleRegistrationPage();
         button2.addActionListener(ownerLogin);
     }
 
@@ -121,7 +121,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelP = new JLabel("Password");
         JLabel labelFN = new JLabel("Full Name");
         JLabel labelTime = new JLabel("Job Duration (Hours)");
-        JLabel labelDeadline = new JLabel("Deadline (Hours)");
+        JLabel labelDeadline = new JLabel("Deadline");
         JLabel CarLabel2 = new JLabel();
         CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
 
@@ -143,16 +143,21 @@ public class HomeScreen extends JFrame implements ActionListener {
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
                     bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
-                    bw.append("Client Deadline " + clientDeadline.getText() + " hours " + "\n");
+                    bw.append("Client Deadline " + clientDeadline.getText() + "\n");
                     bw.append("Job ID:" + JobID + "\n");
                     bw.append(DateTimer + "\n");
 
                     bw.close();
 
                 }catch(IOException ex){
-
+                	
                 }
-
+            	clientUserName.setText("");
+            	clientPassword.setText("");
+            	clientFullName.setText("");
+            	clientJobDuration.setText("");
+            	clientDeadline.setText("");
+            	
             }
         });
         JButton back = new JButton(new AbstractAction("Back!") {
@@ -285,6 +290,12 @@ public class HomeScreen extends JFrame implements ActionListener {
                     ownerLogin.close();
 
                 }catch(IOException ex){}
+                	ownerID.setText("");
+                	ownerFullname.setText("");
+                	ownerCarMake.setText("");
+                	ownerCarModel.setText("");
+                	ownerCarYear.setText("");
+                	residencyTime.setText("");
             }
         });
 
@@ -350,4 +361,3 @@ public class HomeScreen extends JFrame implements ActionListener {
         RegisterVehicleFrame.setVisible(true);
     }
 }
-
