@@ -122,7 +122,7 @@ public class HomeScreen extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == enterButton2)
                     panel2.add(TimeLabel);
-                frame2.add(panel2);
+                
                 frame2.setVisible(true);
 
                 try{
