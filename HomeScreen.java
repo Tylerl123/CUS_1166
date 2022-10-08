@@ -54,11 +54,11 @@ public class HomeScreen extends JFrame implements ActionListener {
 
     public HomeScreen() {
         HomeScreenFrame = new JFrame("VCRTS Project");
-        HomeScreenFrame.setSize(500,500);
+        HomeScreenFrame.setSize(1400,800); // 500 x 500
         HomeScreenPanel = new JPanel();
 
 
-        HomeScreenPanel.setBackground(new Color(170, 128, 250));
+        HomeScreenPanel.setBackground(new Color(92, 27, 150));
 
 
         ImageIcon favicon = new ImageIcon("Images/MotherBoardIcon.png");
@@ -72,18 +72,19 @@ public class HomeScreen extends JFrame implements ActionListener {
         button2 = new JButton("Vehicle Registration"); //Owner registers a car
         button1.setBackground(new Color(217, 174, 89));
         button2.setBackground(new Color(217, 174, 89));
+        button1.setPreferredSize(new Dimension(250, 60));
+        button2.setPreferredSize(new Dimension(250, 60));
         HomeScreenPanel.add(button1);
         HomeScreenPanel.add(button2);
         // keep these two lines of codes below add button
         HomeScreenFrame.add(HomeScreenPanel);
         // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
-
         HomeScreenFrame.setVisible(true);
 
-        button1.addActionListener(this);
 
-        ActionListener ownerLogin = new VehicleRegistrationPage();
-        button2.addActionListener(ownerLogin);
+                button1.addActionListener(this);
+                ActionListener ownerLogin = new VehicleRegistrationPage();
+                button2.addActionListener(ownerLogin);
     }
 
 
