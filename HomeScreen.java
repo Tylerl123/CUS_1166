@@ -132,7 +132,10 @@ public class HomeScreen extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == enterButton2)
-                    panel2.add(TimeLabel);
+                TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
+                Time = TimeFormatter.format(new Date());
+                TimeLabel.setText(Time);
+                panel2.add(TimeLabel);
                 frame2.setVisible(true);
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
                 LocalDateTime now = LocalDateTime.now();
