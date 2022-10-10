@@ -126,9 +126,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel CarLabel2 = new JLabel();
         CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
-        LocalDateTime now = LocalDateTime.now();
-        String DateTimer = (dtf.format(now));
+
 
         enterButton2 = new JButton(new AbstractAction("Enter!") { //make back button to go to previous window
             @Override
@@ -136,7 +134,9 @@ public class HomeScreen extends JFrame implements ActionListener {
                 if(e.getSource() == enterButton2)
                     panel2.add(TimeLabel);
                 frame2.setVisible(true);
-
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
+                LocalDateTime now = LocalDateTime.now();
+                String DateTimer = (dtf.format(now));
                 try{
 
                     BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
@@ -268,9 +268,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel CarLabel = new JLabel();
 
         CarLabel.setIcon(new ImageIcon("Images/Car.png"));
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
-        LocalDateTime now = LocalDateTime.now();
-        String DateTimer = (dtf.format(now));
+
 
 
         //! Enter Button initialization
@@ -278,6 +276,9 @@ public class HomeScreen extends JFrame implements ActionListener {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
+                  LocalDateTime now = LocalDateTime.now();
+                  String DateTimer = (dtf.format(now));
                 try{
                     BufferedWriter ownerLogin = new BufferedWriter(new FileWriter("OwnerInformation.txt",true));
                     ownerLogin.append("Owner ID: " + ownerID.getText() + "\n");
