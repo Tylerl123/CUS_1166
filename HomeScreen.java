@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
-import javax.swing.ImageIcon;
 
 
 public class HomeScreen extends JFrame implements ActionListener {
@@ -29,7 +28,8 @@ public class HomeScreen extends JFrame implements ActionListener {
     private JButton button1;
     private JButton button2;
     private static  JFrame HomeScreenFrame;
-    private JPanel HomeScreenPanel;
+    private JPanel HomeScreenBackgroundPanel;
+    public static JPanel loginSignupPanel;
 
     public static JTextField clientUserName;
     public static JTextField clientPassword;
@@ -55,29 +55,35 @@ public class HomeScreen extends JFrame implements ActionListener {
     public HomeScreen() {
         HomeScreenFrame = new JFrame("VCRTS Project");
         HomeScreenFrame.setSize(1400,800); // 500 x 500
-        HomeScreenPanel = new JPanel();
-
-
-        HomeScreenPanel.setBackground(new Color(92, 27, 150));
-
-
         ImageIcon favicon = new ImageIcon("Images/MotherBoardIcon.png");
-
         HomeScreenFrame.setIconImage(favicon.getImage());
-        TimeLabel = new JLabel();
-        TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
-        Time = TimeFormatter.format(new Date());
-        TimeLabel.setText(Time);
+
+        HomeScreenBackgroundPanel = new JPanel();
+        HomeScreenBackgroundPanel.setBackground(new Color(92, 27, 150));
+        
+        //! LoginBox panel created
+        loginSignupPanel = new JPanel();
+        loginSignupPanel.setPreferredSize(new Dimension(600,1000));
+        loginSignupPanel.setBackground(new Color(247, 247, 247));
+        loginSignupPanel.setBounds(800, 70, 500, 650);
+
+
+            TimeLabel = new JLabel();
+            TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
+            Time = TimeFormatter.format(new Date());
+            TimeLabel.setText(Time);
+
         button1 = new JButton("Client Registration"); //Client rents a vehicle
         button2 = new JButton("Vehicle Registration"); //Owner registers a car
         button1.setBackground(new Color(217, 174, 89));
         button2.setBackground(new Color(217, 174, 89));
         button1.setPreferredSize(new Dimension(250, 60));
         button2.setPreferredSize(new Dimension(250, 60));
-        HomeScreenPanel.add(button1);
-        HomeScreenPanel.add(button2);
+        HomeScreenBackgroundPanel.add(button1);
+        HomeScreenBackgroundPanel.add(button2);
         // keep these two lines of codes below add button
-        HomeScreenFrame.add(HomeScreenPanel);
+        HomeScreenFrame.add(loginSignupPanel);
+        HomeScreenFrame.add(HomeScreenBackgroundPanel);
         // This line has to be after declaring the HomeScreenPanel and setting it's color to show that the object has been defined before it is added or else the home screen will be blank
         HomeScreenFrame.setVisible(true);
 
@@ -97,6 +103,8 @@ public class HomeScreen extends JFrame implements ActionListener {
         }
     }
 
+
+//! ============================================================================================================================================================================
 
     public static void createClientButton() {  // Beginning of createClientButton
 
@@ -158,7 +166,6 @@ public class HomeScreen extends JFrame implements ActionListener {
             	clientFullName.setText("");
             	clientJobDuration.setText("");
             	clientDeadline.setText("");
-            	
             }
         });
         JButton back = new JButton(new AbstractAction("Back!") {
