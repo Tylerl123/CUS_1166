@@ -148,6 +148,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
                 LocalDateTime now = LocalDateTime.now();
                 String DateTimer = (dtf.format(now));
+                System.out.println("Completed Successfully");
                 try{
 
                     BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt",true));
@@ -289,6 +290,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
                   LocalDateTime now = LocalDateTime.now();
                   String DateTimer = (dtf.format(now));
+                  System.out.println("Completed Successfully");
                 try{
                     BufferedWriter ownerLogin = new BufferedWriter(new FileWriter("OwnerInformation.txt",true));
                     ownerLogin.append("Owner ID: " + ownerID.getText() + "\n");
