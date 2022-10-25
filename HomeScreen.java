@@ -406,7 +406,8 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 		CarLabel.setIcon(new ImageIcon("Images/Car.png"));
 
-		// ! Enter Button initialization
+		// Compute Button
+		//======================================================================================================================================
 		
 		loginButton = new JButton(new AbstractAction("login") {
 
@@ -453,7 +454,8 @@ public class HomeScreen extends JFrame implements ActionListener {
 			}
 		});
 
-		// ! Back button initialization
+		// continution of controller code
+		//==============================================================================================================================================
 		JButton backButton2 = new JButton(new AbstractAction("Back") {
 
 			@Override
