@@ -35,7 +35,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 	public static JTextField clientFullName;
 	public static JTextField clientJobDuration;
 	public static JTextField clientDeadline;
-	public static int JobID;
+	
 
 	public static JTextField ownerID;
 	public static JTextField ownerFullname;
@@ -162,7 +162,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 					bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
 					bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
 					bw.append("Client Deadline " + clientDeadline.getText() + "\n");
-					bw.append("Job ID:" + JobID + "\n");
+					bw.append("Job ID:" + Job.JobID + "\n");
 					bw.append(DateTimer + "\n");
 
 					bw.close();
@@ -203,8 +203,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 		clientDeadline = new JTextField();// textfield for deadline
 		clientDeadline.setPreferredSize(new Dimension(150, 20));
 
-		Random random = new Random();
-		JobID = random.nextInt(10000000) + 1;
+	
 		panel2.add(enterButton2);
 		panel2.add(back);
 
