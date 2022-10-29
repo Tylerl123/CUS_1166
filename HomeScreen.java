@@ -185,11 +185,11 @@ public class HomeScreen extends JFrame implements ActionListener {
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
 
-                    bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
+                  //  bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
 
 
                     bw.append("Client Deadline " + clientDeadline.getText() + "\n");
-                    bw.append("Job ID:" + Job.JobID + "\n");
+                    bw.append("Job ID:" + Job.JobID + " finishes at Duration:" +clientJobDuration.getText()+"\n");
                     bw.append(DateTimer + "\n");
 
                     bw.close();
@@ -478,7 +478,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                 textArea.setBackground(new Color(191,161,250));
 
                 try {
-                    FileReader reader = new FileReader("Job.txt");
+                    FileReader reader = new FileReader("clientInformation.txt");
 
                     textArea.read(reader, "Job.txt");
                     textArea.setLayout(new FlowLayout());
