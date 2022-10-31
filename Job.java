@@ -12,7 +12,7 @@ public class  Job extends Main {
     public static int JobID;
     static int INTCOMPLETION;
     static String JAB;
-
+    public static int COMPLETION;
     public Job() {
 
         Random random = new Random();
@@ -36,31 +36,10 @@ public class  Job extends Main {
         } catch (IOException ex) {
 
         }
-        ArrayList<String> JobList = new ArrayList<String>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Luis\\CUS1166 GUI\\Job.txt"))) {
-            String JobIndex;
-
-            while ((JobIndex = br.readLine()) != null) {
-                JobList.add(JobIndex);
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        List<Integer> newList = new ArrayList<Integer>(JobList.size());
-        for (String myInt : JobList) {
-            newList.add(Integer.valueOf(myInt));
-            int COMPLETION = 0;
-            for (int i = 0; i < newList.size(); i++) {
-
-                COMPLETION += newList.get(i);
 
 
-            }
-            System.out.println(COMPLETION);
-        } try {
+
+              try {
 
             BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Luis\\CUS1166 GUI\\Job.txt", true));
 
@@ -74,3 +53,4 @@ public class  Job extends Main {
 
         }
     }
+}
