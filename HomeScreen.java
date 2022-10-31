@@ -1,9 +1,3 @@
-/* Project:  Milestone 2
- * Class: HomeScreen.java
- * Author:   Ryan Doyle, Luis Guarin, Tyler Logan, Dondre Campbell, Shafin Ahmed
- * Date: October 4, 2022
- * This program creates the gui that has 2 buttons that leads to 2 new frames where the user enters in info and submits info into a txt
- */
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +7,9 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import javax.swing.ImageIcon;
 
@@ -78,7 +74,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         HomeScreenPanel.setLayout(null);
         HomeScreenPanel.setPreferredSize(new Dimension(900,900));
 
-        ImageIcon favicon = new ImageIcon("C:\\Users\\Luis\\Desktop\\MotherBoardIcon.png");
+        ImageIcon favicon = new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\MotherBoardIcon.png");
 
         HomeScreenFrame.setIconImage(favicon.getImage());
         TimeLabel = new JLabel();
@@ -156,7 +152,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelTime = new JLabel("Job Duration (Hours)");
         JLabel labelDeadline = new JLabel("Deadline");
         JLabel CarLabel2 = new JLabel();
-        CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
+        CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\Desktop\\tablet.png"));
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
@@ -305,7 +301,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelResTime = new JLabel("Residency Time (Hours)");
         JLabel CarLabel = new JLabel();
 
-        CarLabel.setIcon(new ImageIcon("Images/Car.png"));
+        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\Desktop\\Car.png"));
 
         // ! Enter Button initialization
         JButton enterButton = new JButton(new AbstractAction("Enter") {
@@ -434,7 +430,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
         JLabel CarLabel = new JLabel();
 
-        CarLabel.setIcon(new ImageIcon("Images/Car.png"));
+        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\Desktop\\Car.png"));
 
         // Compute Button
         //======================================================================================================================================
@@ -460,7 +456,39 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputePanel.setPreferredSize(new Dimension(200, 700));
                 ComputePanel.setBackground(new Color(191, 161, 250));
 
-                JButton calculate = new JButton("Calculate");
+                JButton calculate = new JButton(new AbstractAction("Calculate") {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ArrayList<String> JobList = new ArrayList<String>();
+
+                        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Luis\\CUS1166 GUI\\Job.txt"))) {
+                            String JobIndex;
+
+                            while ((JobIndex = br.readLine()) != null) {
+                                JobList.add(JobIndex);
+
+                            }
+
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+
+
+
+                        List<Integer> newList = new ArrayList<Integer>(JobList.size());
+                        for (String myInt : JobList) {
+                            newList.add(Integer.valueOf(myInt));
+                            Job.COMPLETION = 0;
+                            for (int i = 0; i < newList.size(); i++) {
+
+                                Job.COMPLETION += newList.get(i);
+
+
+                            }
+                            System.out.println(Job.COMPLETION);
+                        }
+                    }
+                });
 
                 JButton backButton3 = new JButton(new AbstractAction("Back") {
 
