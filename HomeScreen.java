@@ -467,6 +467,8 @@ public class HomeScreen extends JFrame implements ActionListener {
                 JButton calculate = new JButton(new AbstractAction("Calculate") {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                      System.out.println("The Completion Times for the jobs are:");
+
                         ArrayList<String> JobList = new ArrayList<String>();
 
                         try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Luis\\CUS1166 GUI\\Job.txt"))) {
