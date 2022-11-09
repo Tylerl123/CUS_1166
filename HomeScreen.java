@@ -1,3 +1,9 @@
+/* Project:  Milestone 2
+ * Class: HomeScreen.java
+ * Author:   Ryan Doyle, Luis Guarin, Tyler Logan, Dondre Campbell, Shafin Ahmed
+ * Date: October 4, 2022
+ * This program creates the gui that has 2 buttons that leads to 2 new frames where the user enters in info and submits info into a txt
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +26,7 @@ public class HomeScreen extends JFrame implements ActionListener {
     private JButton button3;
 
 
+
     private static JFrame HomeScreenFrame;
     private static JFrame ComputeFrame;
     private JPanel HomeScreenPanel;
@@ -37,14 +44,19 @@ public class HomeScreen extends JFrame implements ActionListener {
     public static JTextField ownerCarYear;
     public static JTextField residencyTime;
     public static Label HomeScreenLabel;
+    public static JPanel ComputePanel;
     public static JTextField controllerUsername;
     public static JTextField controllerPassword;
+    public static JTextField JobIDField;
+    public static JTextArea textArea2;
+    public static JLabel POPOO = new JLabel();
 
     public static JLabel TimeLabel;
     public static SimpleDateFormat TimeFormatter;
     public static String Time;
     public static String JOBNUMBERSTRING = String.valueOf(HomeScreen.clientJobDuration);
     public static String JOBNUMBERINT;
+
 
 
     static JButton loginButton;
@@ -60,7 +72,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         HomeScreenFrame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
         HomeScreenPanel = new JPanel();
         JPanel CarImagePanel2 = new JPanel(); // ? made panel to hold car image label
-        CarImagePanel2.setPreferredSize(new Dimension(300, 800));
+        CarImagePanel2.setPreferredSize(new Dimension(350, 850));
         CarImagePanel2.setBackground(new Color(199, 160, 215));
 
         JLabel CarLabel2 = new JLabel();
@@ -137,9 +149,9 @@ public class HomeScreen extends JFrame implements ActionListener {
         frame2.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
         JPanel panel2 = new JPanel();
-        frame2.add(panel2);
 
-        panel2.setPreferredSize(new Dimension(200, 700));
+
+        panel2.setPreferredSize(new Dimension(190, 700));
         panel2.setBackground(new Color(204, 178, 255));
 
         JPanel CarImagePanel2 = new JPanel(); // ? made panel to hold car image label
@@ -149,21 +161,21 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel label2 = new JLabel("Client ID");
         JLabel labelP = new JLabel("Password");
         JLabel labelFN = new JLabel("Full Name");
+        JLabel labelJobID = new JLabel("Job ID");
         JLabel labelTime = new JLabel("Job Duration (Hours)");
         JLabel labelDeadline = new JLabel("Deadline");
         JLabel CarLabel2 = new JLabel();
         CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\Desktop\\tablet.png"));
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
         String DateTimer = (dtf.format(now));
-       enterButton2 = new JButton(new AbstractAction("Enter!") { // make back button to go to previous window
+        enterButton2 = new JButton(new AbstractAction("Enter!") { // make back button to go to previous window
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                   if (e.getSource() == enterButton2)
-                       new Job();
-                   TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
+                if (e.getSource() == enterButton2)
+                    new Job();
+                TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
                 Time = TimeFormatter.format(new Date());
                 TimeLabel.setText(Time);
                 panel2.add(TimeLabel);
@@ -181,11 +193,11 @@ public class HomeScreen extends JFrame implements ActionListener {
                     bw.append("Password:  " + clientPassword.getText() + "\n");
                     bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
 
-                  //  bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
+                    //  bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
 
 
                     bw.append("Client Deadline " + clientDeadline.getText() + "\n");
-                    bw.append("Job ID:" + Job.JobID + " finishes at Duration:" +clientJobDuration.getText()+"\n");
+                    bw.append("Job ID:" + JobIDField.getText() + " finishes at Duration:" +clientJobDuration.getText()+"\n");
                     bw.append(DateTimer + "\n");
 
                     bw.close();
@@ -197,7 +209,10 @@ public class HomeScreen extends JFrame implements ActionListener {
                 clientUserName.setText("");
                 clientPassword.setText("");
                 clientFullName.setText("");
+                JobIDField.setText("");
                 clientJobDuration.setText("");
+
+
                 clientDeadline.setText("");
 
             }
@@ -222,6 +237,10 @@ public class HomeScreen extends JFrame implements ActionListener {
         clientFullName = new JTextField();// textfield for full name
         clientFullName.setPreferredSize(new Dimension(150, 20));
 
+        JobIDField = new JTextField();// textfield for job duration
+        JobIDField.setPreferredSize(new Dimension(150, 20));
+
+
         clientJobDuration = new JTextField();// textfield for job duration
         clientJobDuration.setPreferredSize(new Dimension(150, 20));
 
@@ -229,9 +248,6 @@ public class HomeScreen extends JFrame implements ActionListener {
         clientDeadline = new JTextField();// textfield for deadline
         clientDeadline.setPreferredSize(new Dimension(150, 20));
 
-
-        panel2.add(enterButton2);
-        panel2.add(back);
 
         // labels added to the panel
 
@@ -245,16 +261,28 @@ public class HomeScreen extends JFrame implements ActionListener {
         panel2.add(clientFullName);
 
 
+
+
         panel2.add(labelTime);
         panel2.add(clientJobDuration);
 
+
+
         panel2.add(labelDeadline);
         panel2.add(clientDeadline);
+
+
         CarImagePanel2.add(CarLabel2);
         enterButton2.setBackground(new Color(217, 174, 89));
         back.setBackground(new Color(217, 174, 89));
 
+        panel2.add(labelJobID);
+        panel2.add(JobIDField);
+
+
+        frame2.add(panel2);
         frame2.add(CarImagePanel2);
+
 
         panel2.add(enterButton2);
         panel2.add(back);
@@ -452,43 +480,35 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputeFrame.setSize(500, 500);
                 ComputeFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
-                JPanel ComputePanel = new JPanel();
-                ComputePanel.setPreferredSize(new Dimension(200, 700));
+                ComputePanel = new JPanel();
+                ComputePanel.setPreferredSize(new Dimension(400, 700));
                 ComputePanel.setBackground(new Color(191, 161, 250));
+                //ComputePanel.remove(POPOO);
 
                 JButton calculate = new JButton(new AbstractAction("Calculate") {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        ArrayList<String> JobList = new ArrayList<String>();
+                        try {
 
-                        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Luis\\CUS1166 GUI\\Job.txt"))) {
-                            String JobIndex;
 
-                            while ((JobIndex = br.readLine()) != null) {
-                                JobList.add(JobIndex);
+                            //JFrame Launch = new JFrame();
+                            textArea2 = new JTextArea();
 
-                            }
+                            //HomeScreen.ComputePanel.add(textArea2);
+
+
+
+
+                            Controller.Calculate();
+
+
+
+
 
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
-
-
-
-                        List<Integer> newList = new ArrayList<Integer>(JobList.size());
-                        for (String myInt : JobList) {
-                            newList.add(Integer.valueOf(myInt));
-                            Job.COMPLETION = 0;
-                            for (int i = 0; i < newList.size(); i++) {
-
-                                Job.COMPLETION += newList.get(i);
-
-
-                            }
-                            System.out.println(Job.COMPLETION);
-                        }
-                    }
-                });
+                    }});
 
                 JButton backButton3 = new JButton(new AbstractAction("Back") {
 
@@ -502,15 +522,23 @@ public class HomeScreen extends JFrame implements ActionListener {
                 calculate.setBackground(new Color(217, 174, 89));
                 backButton3.setBackground(new Color(217, 174, 89));
                 JTextArea textArea = new JTextArea();
-                textArea.setPreferredSize(new Dimension(100,300));
+
+                // textArea.setPreferredSize(new Dimension(425,400));
+
+                textArea.setLayout(new FlowLayout(FlowLayout.CENTER));
+                textArea.setBounds(500,-100,425,400);
                 textArea.setBackground(new Color(191,161,250));
+                textArea.setEditable(false);
+
 
                 try {
-                    FileReader reader = new FileReader("clientInformation.txt");
+                    FileReader reader = new FileReader("JobList.txt");
 
-                    textArea.read(reader, "Job.txt");
-                    textArea.setLayout(new FlowLayout());
+                    textArea.read(reader, "JobList.txt");
+
+
                     textArea.setVisible(true);
+
 
                 } catch (IOException e)   {
 
