@@ -10,8 +10,7 @@ import java.util.Random;
 
 public class  Job extends Main {
     public static int JobID;
-    static int INTCOMPLETION;
-    static String JAB;
+
     public static int COMPLETION;
     public Job() {
 
@@ -25,21 +24,27 @@ public class  Job extends Main {
 
             //bw.append("Job ID:" + JobID + "\n");
 
-           bw.append(HomeScreen.clientJobDuration.getText() + "\n");
+            bw.append(HomeScreen.clientJobDuration.getText() + "\n");
 
-            JAB = HomeScreen.clientJobDuration.getText();
-            INTCOMPLETION = Integer.parseInt(JAB);
+            //JAB = HomeScreen.clientJobDuration.getText();
+           // INTCOMPLETION = Integer.parseInt(JAB);
 
 
             bw.close();
 
+            BufferedWriter br = new BufferedWriter(new FileWriter("C:\\Users\\Luis\\CUS1166 GUI\\JobList.txt", true));
+            br.append(("Job ID:  " + HomeScreen.JobIDField.getText() +  "  Duration:  "  + HomeScreen.clientJobDuration.getText() + "\n"));
+
+            br.close();
+
         } catch (IOException ex) {
+
 
         }
 
 
 
-              try {
+        try {
 
             BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Luis\\CUS1166 GUI\\Job.txt", true));
 
