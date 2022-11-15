@@ -10,32 +10,35 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class HomeScreen extends JFrame implements ActionListener {
 
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
+    private static JButton button1;
+    private static JButton button2;
+    private static JButton button3;
+    public static JButton REJECT;
 
 
 
     private static JFrame HomeScreenFrame;
     private static JFrame ComputeFrame;
-    private JPanel HomeScreenPanel;
+    private static JPanel HomeScreenPanel;
 
     public static JTextField clientUserName;
     public static JTextField clientPassword;
     public static JTextField clientFullName;
     public static JTextField clientDeadline;
+    public static String JOBNAME;
 
+
+static ActionEvent ea;
     public static JTextField clientJobDuration;
     public static JTextField ownerID;
     public static JTextField ownerFullname;
@@ -50,21 +53,36 @@ public class HomeScreen extends JFrame implements ActionListener {
     public static JTextField JobIDField;
     public static JTextArea textArea2;
     public static JLabel POPOO = new JLabel();
+    public static JLabel AdminLabel;
 
     public static JLabel TimeLabel;
     public static SimpleDateFormat TimeFormatter;
     public static String Time;
     public static String JOBNUMBERSTRING = String.valueOf(HomeScreen.clientJobDuration);
-    public static String JOBNUMBERINT;
+
+    static ServerSocket serverSocket;
+    static Socket socket;
+    static DataInputStream inputStream;
+    static DataOutputStream outputStream;
+    static String AdminSelect;
 
 
 
     static JButton loginButton;
     static JButton enterButton2;
+   static JButton ACCEPT;
 
 
 
-    public HomeScreen() {
+
+
+    public static void main(String[] args) throws IOException {
+
+        socket = new Socket("localhost", 3000);
+
+        inputStream = new DataInputStream(socket.getInputStream());
+        outputStream = new DataOutputStream(socket.getOutputStream());
+
 
         HomeScreenFrame = new JFrame("VCRTS Project");
         HomeScreenFrame.setSize(1400, 800);// 500 x 500
@@ -97,9 +115,9 @@ public class HomeScreen extends JFrame implements ActionListener {
         button2 = new JButton("Vehicle Registration"); // Owner registers a car
         button3 = new JButton("VC Controller"); // Owner registers a car
 
-        button1.setBackground(new Color(217, 174, 89));
-        button2.setBackground(new Color(217, 174, 89));
-        button3.setBackground(new Color(217, 174, 89));
+        button1.setBackground(new Color(250, 249, 249));
+        button2.setBackground(new Color(250, 249, 249));
+        button3.setBackground(new Color(250, 249, 249));
         CarImagePanel2.setBounds(200,50,500,300);
         button1.setBounds(20,400,250,60);
 
@@ -120,21 +138,27 @@ public class HomeScreen extends JFrame implements ActionListener {
         // color to show that the object has been defined before it is added or else the
         // home screen will be blank
         HomeScreenFrame.setVisible(true);
-
-        button1.addActionListener(this);
+        ActionListener clientsLOGIN = new ClientRegistrationPage();
+        button1.addActionListener(clientsLOGIN);
         ActionListener ownerLogin = new VehicleRegistrationPage();
 
         button2.addActionListener(ownerLogin);
-        ActionListener vcController = new vcControllerPage();
+         ActionListener vcController = new vcControllerPage();
         button3.addActionListener(vcController);
     }
 
-    // Action performed method that gives functionality to java "back button"
     @Override
-    public void actionPerformed(ActionEvent e) { // create new window for owner to login
-        if (e.getSource() == button1) {
-            createClientButton();
-            HomeScreenFrame.dispose();
+    public void actionPerformed(ActionEvent e) {
+
+    }
+
+    // Action performed method that gives functionality to java "back button"
+    static class ClientRegistrationPage implements ActionListener {
+        public void actionPerformed(ActionEvent e) { // create new window for owner to login
+            if (e.getSource() == button1) {
+                createClientButton();
+                HomeScreenFrame.dispose();
+            }
         }
     }
 
@@ -165,46 +189,23 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelTime = new JLabel("Job Duration (Hours)");
         JLabel labelDeadline = new JLabel("Deadline");
         JLabel CarLabel2 = new JLabel();
-        CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\Desktop\\tablet.png"));
+        CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\tablet.png"));
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
         String DateTimer = (dtf.format(now));
-        enterButton2 = new JButton(new AbstractAction("Enter!") { // make back button to go to previous window
+        enterButton2 = new JButton(new AbstractAction("Enter") { // make back button to go to previous window
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == enterButton2)
                     new Job();
-                TimeFormatter = new SimpleDateFormat("hh:mm:ss a");
-                Time = TimeFormatter.format(new Date());
-                TimeLabel.setText(Time);
-                panel2.add(TimeLabel);
-                frame2.setVisible(true);
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
-                LocalDateTime now = LocalDateTime.now();
-                String DateTimer = (dtf.format(now));
-                System.out.println("Completed Successfully");
 
-
-                try {
-
-                    BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt", true));
-                    bw.append("Client ID: " + clientUserName.getText() + "\n");
-                    bw.append("Password:  " + clientPassword.getText() + "\n");
-                    bw.append("Client Full Name:  " + clientFullName.getText() + "\n");
-
-                    //  bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
-
-
-                    bw.append("Client Deadline " + clientDeadline.getText() + "\n");
-                    bw.append("Job ID:" + JobIDField.getText() + " finishes at Duration:" +clientJobDuration.getText()+"\n");
-                    bw.append(DateTimer + "\n");
-
-                    bw.close();
-
-                } catch (IOException ex) {
-
-                }
+                System.out.println("Request Pending...");
+                Client.UserName = clientUserName.getText();
+                Client.fullName = clientFullName.getText();
+                Client.deadLine = clientDeadline.getText();
+                Client.duration = clientJobDuration.getText();
+                Client.JobIDString = JobIDField.getText();
 
                 clientUserName.setText("");
                 clientPassword.setText("");
@@ -213,12 +214,12 @@ public class HomeScreen extends JFrame implements ActionListener {
                 clientJobDuration.setText("");
 
 
-                clientDeadline.setText("");
+                HomeScreen.clientDeadline.setText("");
 
-            }
-        });
 
-        JButton back = new JButton(new AbstractAction("Back!") {
+            }});
+
+        JButton back = new JButton(new AbstractAction("Back") {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -273,8 +274,8 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 
         CarImagePanel2.add(CarLabel2);
-        enterButton2.setBackground(new Color(217, 174, 89));
-        back.setBackground(new Color(217, 174, 89));
+        enterButton2.setBackground(new Color(250, 249, 249));
+        back.setBackground(new Color(250, 249, 249));
 
         panel2.add(labelJobID);
         panel2.add(JobIDField);
@@ -293,7 +294,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 //! ============================================================================================================================================================================
 
     // ! Nested class containing the method for button 2's functionality
-    class VehicleRegistrationPage implements ActionListener {
+   static class VehicleRegistrationPage implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -329,7 +330,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelResTime = new JLabel("Residency Time (Hours)");
         JLabel CarLabel = new JLabel();
 
-        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\Desktop\\Car.png"));
+        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\Car.png"));
 
         // ! Enter Button initialization
         JButton enterButton = new JButton(new AbstractAction("Enter") {
@@ -373,8 +374,8 @@ public class HomeScreen extends JFrame implements ActionListener {
             }
         });
 
-        enterButton.setBackground(new Color(217, 174, 89));
-        backButton.setBackground(new Color(217, 174, 89));
+        enterButton.setBackground(new Color(250, 249, 250));
+        backButton.setBackground(new Color(250, 249, 250));
 
         ownerID = new JTextField();// textfield for ownerID
         ownerID.setPreferredSize(new Dimension(150, 20));
@@ -425,7 +426,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 //=============================================================================================================================================
 
-    class vcControllerPage implements ActionListener {
+    static class vcControllerPage implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -463,7 +464,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         // Compute Button
         //======================================================================================================================================
 
-        loginButton = new JButton(new AbstractAction("login") {
+        loginButton = new JButton(new AbstractAction("Login") {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -475,7 +476,9 @@ public class HomeScreen extends JFrame implements ActionListener {
             }
             public  void ComputeButton() {
                 ComputeFrame = new JFrame("Compution");
-                ComputeFrame.getContentPane().setBackground(new Color(191, 161, 250));
+                ComputeFrame.getContentPane().setBackground(new Color(211, 193, 250));
+
+
 
                 ComputeFrame.setSize(500, 500);
                 ComputeFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
@@ -483,6 +486,11 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputePanel = new JPanel();
                 ComputePanel.setPreferredSize(new Dimension(400, 700));
                 ComputePanel.setBackground(new Color(191, 161, 250));
+                AdminLabel = new JLabel("Admin: Please type Accept or Reject");
+                Server.Admin = new JTextField();
+                Server.Admin.setPreferredSize(new Dimension(120,20));
+                Server.Admin.setText("");
+
                 //ComputePanel.remove(POPOO);
 
                 JButton calculate = new JButton(new AbstractAction("Calculate") {
@@ -494,7 +502,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                             //JFrame Launch = new JFrame();
                             textArea2 = new JTextArea();
 
-                            //HomeScreen.ComputePanel.add(textArea2);
+                            HomeScreen.ComputePanel.add(textArea2);
 
 
 
@@ -517,10 +525,51 @@ public class HomeScreen extends JFrame implements ActionListener {
                         ControllerFrame.setVisible(true);
                         ComputeFrame.dispose();
                     }
-                });
 
-                calculate.setBackground(new Color(217, 174, 89));
-                backButton3.setBackground(new Color(217, 174, 89));
+
+                });
+                 REJECT = new JButton(new AbstractAction("Reject") {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource()==REJECT) {
+                            System.out.println("Information rejected");
+                            Server.serverOutput = "MessageReject";
+                        }
+                        // AdminSelect = Server.Admin.getText();
+                       // System.out.println(AdminSelect);
+                    }
+
+
+                });
+                ACCEPT = new JButton((new AbstractAction("Accept") {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource()==ACCEPT)
+                        try {
+                            System.out.println("Information accepted");
+                            Server.serverOutput = "MessageAccepted";
+
+                            HomeScreen.outputStream.writeUTF("Username: " + Client.UserName + " FullName: " + Client.fullName + " Deadline: " + Client.deadLine + " Job ID: " + Client.JobIDString + " Job Duration: " +Client.duration +"\n");
+                            Client.APPENDCLIENT();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                      //  AdminSelect = Server.Admin.getText();
+                      //  System.out.println(AdminSelect);
+                    }
+
+
+                // ACCEPT.addActionListener(Server.getInstance());
+
+                {
+
+
+
+                }}));
+
+                calculate.setBackground(new Color(250, 249, 249));
+                backButton3.setBackground(new Color(250, 249, 249));
                 JTextArea textArea = new JTextArea();
 
                 // textArea.setPreferredSize(new Dimension(425,400));
@@ -546,7 +595,11 @@ public class HomeScreen extends JFrame implements ActionListener {
                 }
                 ComputePanel.add(calculate);
                 ComputePanel.add(backButton3);
+                ComputePanel.add(ACCEPT);
+                ComputePanel.add(REJECT);
                 ComputePanel.add(textArea);
+                ComputePanel.add(AdminLabel);
+                ComputePanel.add(Server.Admin);
                 ComputeFrame.add(ComputePanel);
 
                 ComputeFrame.setVisible(true);
@@ -565,8 +618,8 @@ public class HomeScreen extends JFrame implements ActionListener {
             }
         });
 
-        loginButton.setBackground(new Color(217, 174, 89));
-        backButton2.setBackground(new Color(217, 174, 89));
+        loginButton.setBackground(new Color(250, 249, 249));
+        backButton2.setBackground(new Color(250, 249, 249));
 
         controllerUsername = new JTextField();// textfield for ownerID
         controllerUsername.setPreferredSize(new Dimension(150, 20));
