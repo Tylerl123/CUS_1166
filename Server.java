@@ -1,77 +1,84 @@
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
-public class Server {
+public class Server  {
+
 
     static ServerSocket serverSocket;
     static Socket socket;
     static DataInputStream inputStream;
     static DataOutputStream outputStream;
+    public static JTextField Admin;
+
+    static public File text;
+    static Scanner keyInput;
+    static String clientInput;
+    static String serverOutput = "";
+
 
     public static void main(String[] args) throws IOException {
 
-        String messageIn = "";
-        String messageOut = "";
-        Scanner keyInput;
+        clientInput = "";
+
+        String response = HomeScreen.AdminSelect;
+        Scanner input;
+
 
         try {
-
-            System.out.println("----------$$$ This is server side $$$--------");
-            System.out.println("wating for client to connect...");
-            // creating the server
-            serverSocket = new ServerSocket(9806);
-            // sever accepts connection request from client
+            boolean serverRunning = true;
+            System.out.println("Server Online");
+            System.out.println("Waiting for Response from Client");
+            serverSocket = new ServerSocket(3000);
             socket = serverSocket.accept();
-            System.out.println("client is connected!");
-            System.out.println("go to client side and send me a message");
+            System.out.println("User Connected");
 
-            // server reads a message message from client
-            inputStream = new DataInputStream(socket.getInputStream());
+            while (serverRunning) {
+                System.out.println("Waiting for Input");
 
-            // server sends a message to client
-            outputStream = new DataOutputStream(socket.getOutputStream());
+                inputStream = new DataInputStream(socket.getInputStream());
+                outputStream = new DataOutputStream(socket.getOutputStream());
 
-            // as long as message is not exit keep reading and sending message to client
-            while (!messageIn.equals("exit")) {
+                clientInput = inputStream.readUTF();
+                System.out.println("Input received");
+                System.out.println(clientInput.toString());
 
-                // extract the message from client
-                messageIn = inputStream.readUTF();
-                // server prints the message received from client to console
-                System.out.println("message received from client: " + "\"" + messageIn + "\"");
+                System.out.println("Would you like to save this message? Yes/No?");
 
-                // ********************************************************
-                // server reads file
-                File text = new File("clientInformation.txt");
 
-                //Creating Scanner instance to read File in Java
-                try {
-                    keyInput = new Scanner(System.in);
-                    //Reading each line of the file using Scanner class
 
-                    while (keyInput.hasNextLine()) {
-                        String line = keyInput.nextLine();
-                        System.out.println("line "  + line);
 
-                        System.out.println(text);
+                while (!Admin.getText().equals("Yes") || !Admin.getText().equals("No")) {
+                   if (Admin.getText().equals("Yes")) {
 
-                        // System.out.println("Enter a message you want to send to client side: ");
-                        //keyInput = new Scanner(System.in);
-                        //messageOut = keyInput.nextLine();
-                        // server sends the message to client
-                        outputStream.writeUTF(messageOut);
+
+
+                         System.out.println("Information accepted");
+                        serverOutput = "MessageAccepted";
+                        Client.APPENDCLIENT();
+                        break;
+                    } else if (HomeScreen.AdminSelect.equals("No")) {
+
+
+                        break;
+                    } else {
+                        System.out.println("Please input Yes or No");
                     }
-
-                } catch (Exception ex) {
-
-                    ex.printStackTrace();
                 }
-
+                // outputStream.writeUTF(serverOutput);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }
+
