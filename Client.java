@@ -1,65 +1,78 @@
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Scanner;
-import java.io.*;
+import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class Client {
+public class Client extends Main {
 
+        public static String fullName;
+        public static String deadLine;
+        public static String JobIDString;
+        public static String UserName;
 
-    static ServerSocket serverSocket;
-    static Socket socket;
-    static DataInputStream inputStream;
-    static DataOutputStream outputStream;
-
-    public static void main(String[] args) {
-
-        String messageIn = "Hello";
-        String messageOut = "";
-        Scanner keyInput;
-
-        try {
-
-            System.out.println("----------*** This is client side ***--------");
-            System.out.println("client started!");
-            //connect the client socket to server
-            Socket socket = new Socket("localhost", 9806);
+        public static String duration;
 
 
-            //client reads a message from Server
-            inputStream = new DataInputStream(socket.getInputStream());
-            outputStream = new DataOutputStream(socket.getOutputStream());
+        public static void APPENDCLIENT() throws IOException {
+
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
+                LocalDateTime now = LocalDateTime.now();
+                String DateTimer = (dtf.format(now));
+                System.out.println("Completed Successfully");
 
 
-            // client reads a message from keyboard
-            System.out.println("Enter a message you want to send to server side: ");
-            keyInput = new Scanner(System.in);
-            messageOut = keyInput.nextLine();
-            // server sends the message to client
-            outputStream.writeUTF(messageOut);
+                try {
+
+                        BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt", true));
+                     bw.append(Server.clientInput.toString());
 
 
-            while(!messageIn.equals("exit")) {
-                messageIn = inputStream.readUTF();
-                // client prints the message received from server to console
-                System.out.println("message received from server: " + "\"" + messageIn + "\"");
+                      //  bw.append("Client ID: " + HomeScreen.clientUserName.getText() + "\n");
+                      //  bw.append("Password:  " + HomeScreen.clientPassword.getText() + "\n");
+                      //  bw.append("Client Full Name:  " + HomeScreen.clientFullName.getText() + "\n");
+
+                        //  bw.append("Client Job Duration " + clientJobDuration.getText() + "  hours " + "\n");
 
 
-                // ********************************************************
-                // client reads a message from keyboard
-                System.out.println("Enter a message you want to send to server side: ");
-                keyInput = new Scanner(System.in);
-                messageOut = keyInput.nextLine();
-                // server sends the message to client
-                outputStream.writeUTF(messageOut);
+                      //  bw.append("Client Deadline " + HomeScreen.clientDeadline.getText() + "\n");
+                       // bw.append("Job ID:" + HomeScreen.JobIDField.getText() + " finishes at Duration:" + HomeScreen.clientJobDuration.getText() + "\n");
+                       // bw.append(DateTimer + "\n");
 
-            }
+                        bw.close();
+                        JOptionPane.showMessageDialog(null, "The request has been accepted", "Client Login", JOptionPane.PLAIN_MESSAGE);
+                        //JFrame SusWindow = new JFrame("ACCEPTED");
+                       // SusWindow.setSize(450,400);
+                       // SusWindow.setLayout(new BoxLayout(SusWindow.getContentPane(),BoxLayout.Y_AXIS));
+                       // SusWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        //SusWindow.setVisible(true);
+                } catch (IOException ex) {
+
+                }
+
+               // HomeScreen.clientUserName.setText("");
+               // HomeScreen.clientPassword.setText("");
+               // HomeScreen.clientFullName.setText("");
+               // HomeScreen.JobIDField.setText("");
+               // HomeScreen.clientJobDuration.setText("");
 
 
-        } catch (Exception e) {
+               // HomeScreen.clientDeadline.setText("");
 
-            e.printStackTrace();
+
 
         }
-    }
+
+        public static void REJECTCLIENT() throws IOException {
+                System.out.println("Rejected");
+
+        }
+
 }
+
+
+
+
+
 
