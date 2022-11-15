@@ -27,7 +27,7 @@ public class  Job extends Main {
             bw.append(HomeScreen.clientJobDuration.getText() + "\n");
 
             //JAB = HomeScreen.clientJobDuration.getText();
-           // INTCOMPLETION = Integer.parseInt(JAB);
+            // INTCOMPLETION = Integer.parseInt(JAB);
 
 
             bw.close();
