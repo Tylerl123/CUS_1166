@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Server  {
+public class Server {
 
 
     static ServerSocket serverSocket;
@@ -53,32 +53,19 @@ public class Server  {
                 System.out.println(clientInput.toString());
 
                 System.out.println("Would you like to save this message? Yes/No?");
+                {
 
 
-
-
-                while (!Admin.getText().equals("Yes") || !Admin.getText().equals("No")) {
-                   if (Admin.getText().equals("Yes")) {
-
-
-
-                         System.out.println("Information accepted");
-                        serverOutput = "MessageAccepted";
-                        Client.APPENDCLIENT();
-                        break;
-                    } else if (HomeScreen.AdminSelect.equals("No")) {
-
-
-                        break;
-                    } else {
-                        System.out.println("Please input Yes or No");
-                    }
                 }
-                // outputStream.writeUTF(serverOutput);
             }
-        } catch (Exception e) {
+            // outputStream.writeUTF(serverOutput);
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }
+
+
 
