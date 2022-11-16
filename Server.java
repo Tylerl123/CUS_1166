@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Server {
+public class Server  {
+
 
 
     static ServerSocket serverSocket;
@@ -23,6 +23,7 @@ public class Server {
     static public File text;
     static Scanner keyInput;
     static String clientInput;
+    static String ownerInput;
     static String serverOutput = "";
 
 
@@ -37,7 +38,7 @@ public class Server {
         try {
             boolean serverRunning = true;
             System.out.println("Server Online");
-            System.out.println("Waiting for Response from Client");
+            System.out.println("Waiting for Response from Client or Owner");
             serverSocket = new ServerSocket(3000);
             socket = serverSocket.accept();
             System.out.println("User Connected");
@@ -49,16 +50,25 @@ public class Server {
                 outputStream = new DataOutputStream(socket.getOutputStream());
 
                 clientInput = inputStream.readUTF();
+                ownerInput = inputStream.readUTF();
                 System.out.println("Input received");
-                System.out.println(clientInput.toString());
+                if (Client.UserName==null);
+
+                else {
+                    System.out.println(clientInput.toString());
+                }
+
+                if (Owner.UserName==null);
+                else {
+                    System.out.println(ownerInput.toString());
+                }
+
 
                 System.out.println("Would you like to save this message? Yes/No?");
                 {
 
-
                 }
             }
-            // outputStream.writeUTF(serverOutput);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,6 +76,4 @@ public class Server {
 
     }
 }
-
-
 
