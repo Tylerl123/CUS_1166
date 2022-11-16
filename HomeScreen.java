@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.border.EmptyBorder;
 
 public class HomeScreen extends JFrame implements ActionListener {
 
@@ -25,7 +26,7 @@ public class HomeScreen extends JFrame implements ActionListener {
     private static JButton button3;
     public static JButton REJECT;
 
-
+    public static JLabel clientMessage;
 
     private static JFrame HomeScreenFrame;
     private static JFrame ComputeFrame;
@@ -38,7 +39,7 @@ public class HomeScreen extends JFrame implements ActionListener {
     public static String JOBNAME;
 
 
-static ActionEvent ea;
+    static ActionEvent ea;
     public static JTextField clientJobDuration;
     public static JTextField ownerID;
     public static JTextField ownerFullname;
@@ -54,7 +55,10 @@ static ActionEvent ea;
     public static JTextArea textArea2;
     public static JLabel POPOO = new JLabel();
     public static JLabel AdminLabel;
-
+    public static JPanel ComputeImagePanel;
+    public static JPanel ComputeImagePanel2;
+    public static JPanel ComputeImagePanel3;
+    public static JPanel ComputeImagePanel4;
     public static JLabel TimeLabel;
     public static SimpleDateFormat TimeFormatter;
     public static String Time;
@@ -70,7 +74,7 @@ static ActionEvent ea;
 
     static JButton loginButton;
     static JButton enterButton2;
-   static JButton ACCEPT;
+    static JButton ACCEPT;
 
 
 
@@ -88,6 +92,7 @@ static ActionEvent ea;
         HomeScreenFrame.setSize(1400, 800);// 500 x 500
         HomeScreenFrame.getContentPane().setBackground(new Color(199,160,215));
         HomeScreenFrame.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
+
         HomeScreenPanel = new JPanel();
         JPanel CarImagePanel2 = new JPanel(); // ? made panel to hold car image label
         CarImagePanel2.setPreferredSize(new Dimension(350, 850));
@@ -104,7 +109,7 @@ static ActionEvent ea;
         HomeScreenPanel.setLayout(null);
         HomeScreenPanel.setPreferredSize(new Dimension(900,900));
 
-        ImageIcon favicon = new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\MotherBoardIcon.png");
+        ImageIcon favicon = new ImageIcon("MotherBoardIcon.png");
 
         HomeScreenFrame.setIconImage(favicon.getImage());
         TimeLabel = new JLabel();
@@ -143,7 +148,7 @@ static ActionEvent ea;
         ActionListener ownerLogin = new VehicleRegistrationPage();
 
         button2.addActionListener(ownerLogin);
-         ActionListener vcController = new vcControllerPage();
+        ActionListener vcController = new vcControllerPage();
         button3.addActionListener(vcController);
     }
 
@@ -198,8 +203,7 @@ static ActionEvent ea;
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == enterButton2)
-                    new Job();
-
+                Job.Job2();
                 System.out.println("Request Pending...");
                 Client.UserName = clientUserName.getText();
                 Client.fullName = clientFullName.getText();
@@ -249,7 +253,7 @@ static ActionEvent ea;
         clientDeadline = new JTextField();// textfield for deadline
         clientDeadline.setPreferredSize(new Dimension(150, 20));
 
-
+        // clientMessage = new JLabel();
         // labels added to the panel
 
         panel2.add(label2);
@@ -284,7 +288,7 @@ static ActionEvent ea;
         frame2.add(panel2);
         frame2.add(CarImagePanel2);
 
-
+        // panel2.add(clientMessage);
         panel2.add(enterButton2);
         panel2.add(back);
 
@@ -294,7 +298,7 @@ static ActionEvent ea;
 //! ============================================================================================================================================================================
 
     // ! Nested class containing the method for button 2's functionality
-   static class VehicleRegistrationPage implements ActionListener {
+    static class VehicleRegistrationPage implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -334,27 +338,19 @@ static ActionEvent ea;
 
         // ! Enter Button initialization
         JButton enterButton = new JButton(new AbstractAction("Enter") {
-
-            @Override
             public void actionPerformed(ActionEvent e) {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
                 LocalDateTime now = LocalDateTime.now();
                 String DateTimer = (dtf.format(now));
-                System.out.println("Completed Successfully");
-                try {
-                    BufferedWriter ownerLogin = new BufferedWriter(new FileWriter("OwnerInformation.txt", true));
-                    ownerLogin.append("Owner ID: " + ownerID.getText() + "\n");
-                    ownerLogin.append("Full Name:  " + ownerFullname.getText() + "\n");
-                    ownerLogin.append("Car Make:  " + ownerCarMake.getText() + "\n");
-                    ownerLogin.append("Car Model: " + ownerCarModel.getText() + "\n");
-                    ownerLogin.append("Car Year: " + ownerCarYear.getText() + "\n");
-                    ownerLogin.append("Residency Time:" + residencyTime.getText() + " hours " + "\n");
+                System.out.println("Request Pending...");
+                Owner.UserName = ownerID.getText();
+                Owner.fullName = ownerFullname.getText();
+                Owner.carModel = ownerCarModel.getText();
+                Owner.carMake = ownerCarMake.getText();
+                Owner.carYear = ownerCarYear.getText();
+                Owner.carResidency = residencyTime.getText();
 
-                    ownerLogin.append(DateTimer + "\n");
-                    ownerLogin.close();
 
-                } catch (IOException ex) {
-                }
                 ownerID.setText("");
                 ownerFullname.setText("");
                 ownerCarMake.setText("");
@@ -459,22 +455,28 @@ static ActionEvent ea;
 
         JLabel CarLabel = new JLabel();
 
-        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\Desktop\\Car.png"));
+        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\Car.png"));
 
         // Compute Button
         //======================================================================================================================================
 
         loginButton = new JButton(new AbstractAction("Login") {
-
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == loginButton) {
-                    ComputeButton();
-
+                String userValue = controllerUsername.getText();
+                String passValue = controllerPassword.getText();
+                if (userValue.equals("Admin") && passValue.equals("Admin")) {
+                    try {
+                        ComputeButton();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     ControllerFrame.dispose();
+                } else{
+                    JOptionPane.showMessageDialog(ControllerFrame,"Login Error");
                 }
             }
-            public  void ComputeButton() {
+            public  void ComputeButton() throws IOException {
                 ComputeFrame = new JFrame("Compution");
                 ComputeFrame.getContentPane().setBackground(new Color(211, 193, 250));
 
@@ -484,34 +486,38 @@ static ActionEvent ea;
                 ComputeFrame.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
                 ComputePanel = new JPanel();
+
+                ComputeImagePanel = new JPanel();
+                ComputeImagePanel2 = new JPanel();
+                ComputeImagePanel3 = new JPanel();
+                ComputeImagePanel4 = new JPanel();
+                JLabel AdminGear = new JLabel();
+                AdminGear.setIcon(new ImageIcon("C:\\Users\\Luis\\Downloads\\admin.png"));
+                ComputeImagePanel2.add(AdminGear);
+                ComputeImagePanel2.setBackground(new Color(191,161,250));
+                // ComputeImagePanel2.setBorder(new EmptyBorder(20,0,10,0));
+                ComputeImagePanel.setBorder(new EmptyBorder(20,0,10,0));
+                ComputeImagePanel.setBackground(new Color(191, 161, 250));
+                ComputeImagePanel3.setBackground(new Color(191,161,250));
+                ComputeImagePanel4.setBackground(new Color(191,161,250));
+
+
                 ComputePanel.setPreferredSize(new Dimension(400, 700));
                 ComputePanel.setBackground(new Color(191, 161, 250));
-                AdminLabel = new JLabel("Admin: Please type Accept or Reject");
-                Server.Admin = new JTextField();
-                Server.Admin.setPreferredSize(new Dimension(120,20));
-                Server.Admin.setText("");
 
-                //ComputePanel.remove(POPOO);
+                // recieves information from server
+                HomeScreen.outputStream.writeUTF("Username: " + Client.UserName + " Full Name: " + Client.fullName + " Deadline: " + Client.deadLine + " Job ID: " + Client.JobIDString + " Job Duration: " +Client.duration +"\n");
+                HomeScreen.outputStream.writeUTF("Username: " + Owner.UserName + " Full Name: " + Owner.fullName + " Car Make: " + Owner.carMake + " Car Model: " + Owner .carModel + " Car Reisdency: " + Owner.carResidency + Owner.carYear + "\n");
+
 
                 JButton calculate = new JButton(new AbstractAction("Calculate") {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         try {
-
-
-                            //JFrame Launch = new JFrame();
                             textArea2 = new JTextArea();
-
-                            HomeScreen.ComputePanel.add(textArea2);
-
-
-
-
+                            ComputeImagePanel4.add(textArea2);
+                            textArea2.setOpaque(false);
                             Controller.Calculate();
-
-
-
-
 
                         } catch (IOException ex) {
                             ex.printStackTrace();
@@ -522,22 +528,42 @@ static ActionEvent ea;
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        try {
+                            new FileOutputStream("CompletionTime.txt",false).close();
+                        } catch (IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
                         ControllerFrame.setVisible(true);
                         ComputeFrame.dispose();
                     }
 
 
                 });
-                 REJECT = new JButton(new AbstractAction("Reject") {
+                REJECT = new JButton(new AbstractAction("Reject") {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource()==REJECT) {
                             System.out.println("Information rejected");
                             Server.serverOutput = "MessageReject";
+
+                            try {
+                                Server.serverSocket.close();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            try {
+                                Client.REJECTCLIENT();
+                                Owner.REJECTOWNER();
+
+
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
                         }
                         // AdminSelect = Server.Admin.getText();
-                       // System.out.println(AdminSelect);
+                        // System.out.println(AdminSelect);
                     }
 
 
@@ -545,29 +571,25 @@ static ActionEvent ea;
                 ACCEPT = new JButton((new AbstractAction("Accept") {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if (e.getSource()==ACCEPT)
+                        if (e.getSource()==ACCEPT){
+                            Job.Job1();
+
+                        }
                         try {
                             System.out.println("Information accepted");
                             Server.serverOutput = "MessageAccepted";
 
-                            HomeScreen.outputStream.writeUTF("Username: " + Client.UserName + " FullName: " + Client.fullName + " Deadline: " + Client.deadLine + " Job ID: " + Client.JobIDString + " Job Duration: " +Client.duration +"\n");
                             Client.APPENDCLIENT();
+                            Owner.APPENDOWNER();
+
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
-                      //  AdminSelect = Server.Admin.getText();
-                      //  System.out.println(AdminSelect);
                     }
-
-
-                // ACCEPT.addActionListener(Server.getInstance());
-
-                {
-
-
-
-                }}));
-
+                    {
+                    }}));
+                ACCEPT.setBackground(new Color(249,249,249));
+                REJECT.setBackground(new Color(249,249,249));
                 calculate.setBackground(new Color(250, 249, 249));
                 backButton3.setBackground(new Color(250, 249, 249));
                 JTextArea textArea = new JTextArea();
@@ -595,13 +617,20 @@ static ActionEvent ea;
                 }
                 ComputePanel.add(calculate);
                 ComputePanel.add(backButton3);
-                ComputePanel.add(ACCEPT);
-                ComputePanel.add(REJECT);
-                ComputePanel.add(textArea);
-                ComputePanel.add(AdminLabel);
-                ComputePanel.add(Server.Admin);
+                ComputeImagePanel.add(ACCEPT);
+                ComputeImagePanel.add(REJECT);
+              ;
+                ComputeImagePanel3.add(textArea);
+
+
+                ComputeFrame.add(ComputeImagePanel2);
+                ComputeFrame.add(ComputeImagePanel);
+                ComputeFrame.add(ComputeImagePanel3);
+                ComputeFrame.add(ComputeImagePanel4);
+
                 ComputeFrame.add(ComputePanel);
 
+                ComputeFrame.setLayout(new BoxLayout(ComputeFrame.getContentPane(), BoxLayout.PAGE_AXIS));
                 ComputeFrame.setVisible(true);
 
             }
@@ -624,7 +653,7 @@ static ActionEvent ea;
         controllerUsername = new JTextField();// textfield for ownerID
         controllerUsername.setPreferredSize(new Dimension(150, 20));
 
-        controllerPassword = new JTextField();// textfield for fullname
+        controllerPassword = new JPasswordField();// textfield for fullname
         controllerPassword.setPreferredSize(new Dimension(150, 20));
 
         residencyTime = new JTextField(); // textfield for residencyTime
@@ -645,10 +674,6 @@ static ActionEvent ea;
         CarImagePanel.add(CarLabel);
 
         ControllerFrame.setVisible(true);
-
-
-
-
 
     }
 
