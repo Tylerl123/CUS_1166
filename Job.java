@@ -12,30 +12,34 @@ public class  Job extends Main {
     public static int JobID;
 
     public static int COMPLETION;
-    public Job() {
+    public static void Job1() {
 
-        Random random = new Random();
-        JobID = random.nextInt(10000000) + 1;
+        //Random random = new Random();
+       //JobID = random.nextInt(10000000) + 1;
 
 
         try {
-
             BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Luis\\CUS1166 GUI\\Job.txt", true));
 
-            //bw.append("Job ID:" + JobID + "\n");
+            if (Client.UserName==null);
 
-            bw.append(HomeScreen.clientJobDuration.getText() + "\n");
-
-            //JAB = HomeScreen.clientJobDuration.getText();
-            // INTCOMPLETION = Integer.parseInt(JAB);
+            else {
 
 
-            bw.close();
+                //bw.append("Job ID:" + JobID + "\n");
+                bw.append(Client.duration + "\n");
 
-            BufferedWriter br = new BufferedWriter(new FileWriter("C:\\Users\\Luis\\CUS1166 GUI\\JobList.txt", true));
-            br.append(("Job ID:  " + HomeScreen.JobIDField.getText() +  "  Duration:  "  + HomeScreen.clientJobDuration.getText() + "\n"));
+                //JAB = HomeScreen.clientJobDuration.getText();
+                // INTCOMPLETION = Integer.parseInt(JAB);
 
-            br.close();
+
+                bw.close();
+
+                BufferedWriter br = new BufferedWriter(new FileWriter("C:\\Users\\Luis\\CUS1166 GUI\\JobList.txt", true));
+                br.append(("Job ID:  " + Client.JobIDString + "  Duration:  " + Client.duration + "\n"));
+
+                br.close();
+            }
 
         } catch (IOException ex) {
 
@@ -58,4 +62,34 @@ public class  Job extends Main {
 
         }
     }
-}
+
+
+
+    public static void Job2() {
+
+
+            //bw.append("Job ID:" + JobID + "\n");
+            HomeScreen.clientJobDuration.getText();
+
+            //JAB = HomeScreen.clientJobDuration.getText();
+            // INTCOMPLETION = Integer.parseInt(JAB);
+
+
+       HomeScreen.JobIDField.getText();
+       HomeScreen.clientJobDuration.getText();
+
+
+
+
+
+
+        }
+
+
+
+
+
+        }
+
+
+
