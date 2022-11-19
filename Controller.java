@@ -13,7 +13,7 @@ public class Controller {
 
         try (BufferedReader br = new BufferedReader(new FileReader("Job.txt"))) {
             bw = new BufferedWriter(new FileWriter("CompletionTime.txt", true));
-            bw.append("The Completion Times for the Jobs are:");
+            bw.append("Completion Time:" + "\n");
 
 
             String JobIndex;
@@ -33,8 +33,8 @@ public class Controller {
             for (int i = 0; i < newList.size(); i++) {
 
                 Job.COMPLETION += newList.get(i);
-                HomeScreen.POPOO.setText(String.valueOf(Job.COMPLETION));
-                HomeScreen.ComputePanel.add(HomeScreen.POPOO);
+            //    HomeScreen.POPOO.setText(String.valueOf(Job.COMPLETION));
+            //   HomeScreen.ComputePanel.add(HomeScreen.POPOO);
 
             }
             System.out.println(Job.COMPLETION);
