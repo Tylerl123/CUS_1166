@@ -99,7 +99,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         CarImagePanel2.setBackground(new Color(199, 160, 215));
 
         JLabel CarLabel2 = new JLabel();
-        CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\Downloads\\Header.png"));
+        CarLabel2.setIcon(new ImageIcon("Header.png"));
         CarLabel2.setBackground(Color.black);
         //CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
 
@@ -194,7 +194,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelTime = new JLabel("Job Duration (Hours)");
         JLabel labelDeadline = new JLabel("Deadline");
         JLabel CarLabel2 = new JLabel();
-        CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\tablet.png"));
+        CarLabel2.setIcon(new ImageIcon("tablet.png"));
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
         String DateTimer = (dtf.format(now));
@@ -334,7 +334,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelResTime = new JLabel("Residency Time (Hours)");
         JLabel CarLabel = new JLabel();
 
-        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\Car.png"));
+        CarLabel.setIcon(new ImageIcon("Car.png"));
 
         // ! Enter Button initialization
         JButton enterButton = new JButton(new AbstractAction("Enter") {
@@ -455,7 +455,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
         JLabel CarLabel = new JLabel();
 
-        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\Car.png"));
+        CarLabel.setIcon(new ImageIcon("Car.png"));
 
         // Compute Button
         //======================================================================================================================================
@@ -492,7 +492,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputeImagePanel3 = new JPanel();
                 ComputeImagePanel4 = new JPanel();
                 JLabel AdminGear = new JLabel();
-                AdminGear.setIcon(new ImageIcon("C:\\Users\\Luis\\Downloads\\admin.png"));
+                AdminGear.setIcon(new ImageIcon("admin.png"));
                 ComputeImagePanel2.add(AdminGear);
                 ComputeImagePanel2.setBackground(new Color(191,161,250));
                 // ComputeImagePanel2.setBorder(new EmptyBorder(20,0,10,0));

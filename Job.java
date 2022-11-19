@@ -19,7 +19,7 @@ public class  Job extends Main {
 
 
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Luis\\CUS1166 GUI\\Job.txt", true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("Job.txt", true));
 
             if (Client.UserName==null);
 
@@ -35,7 +35,7 @@ public class  Job extends Main {
 
                 bw.close();
 
-                BufferedWriter br = new BufferedWriter(new FileWriter("C:\\Users\\Luis\\CUS1166 GUI\\JobList.txt", true));
+                BufferedWriter br = new BufferedWriter(new FileWriter("JobList.txt", true));
                 br.append(("Job ID:  " + Client.JobIDString + "  Duration:  " + Client.duration + "\n"));
 
                 br.close();
