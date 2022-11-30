@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class Main {
 
 public static Connection connection = null;
-public static String url = "jdbc:mysql://127.0.0.1:3306/?user=root";
+public static String url = "jdbc:mysql://locaLhost:3306/vc3?useTimezone=true&serverTimezone=UTC";
 public static String username = "root";
 public static String password = "ar1560ds";
     public static void main(String[] args) throws IOException, InterruptedException {
