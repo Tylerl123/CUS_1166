@@ -28,7 +28,7 @@ public class Client extends Main {
                         BufferedWriter bw = new BufferedWriter(new FileWriter("clientInformation.txt", true));
                         if (Client.UserName==null);
 
-                                else{
+                        else{
                                 bw.append(Server.clientInput.toString() +"\n");
                                 bw.append(DateTimer + "\n");
                                 bw.close();
@@ -36,8 +36,8 @@ public class Client extends Main {
                         }
                 } catch (IOException ex) {
                 }
-                }
-        
+        }
+
         public static void REJECTCLIENT() throws IOException {
                 if (Client.UserName==null);
 
@@ -46,23 +46,20 @@ public class Client extends Main {
                         JOptionPane.showMessageDialog(null, "The request sent by Client:  " + Client.UserName + " Full Name: " + Client.fullName + " was rejected by Admin", " Client Login ", JOptionPane.PLAIN_MESSAGE);
                 }
         }
-        public static void data(String command){        
+        public static void data(String command){
                 try{
-                   Class.forName("com.mysql.cj.jdbc.Driver");
-                   Connection connection = DriverManager.getConnection(url, username, password);
-                   Statement statement= connection.createStatement();
-                   String sql = command;
-                   int rows = statement.executeUpdate(sql);
-                   if(rows>0){
-                           System.out.println("Data Was Inserted!");
-                   }
-               }
-               catch(Exception d){
-                   System.out.println(d);
-               }}
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection connection = DriverManager.getConnection(url, username, password);
+                        Statement con = connection.createStatement();
+                        String sql = command;
+                        int rows = con.executeUpdate(sql);
+                        System.out.println("SQL insert");
+
+
+                }
+                catch(Exception d){
+                        System.out.println(d);
+                }}
 }
-
-
-
 
 
