@@ -76,6 +76,7 @@ public class HomeScreen extends JFrame implements ActionListener {
     static JButton enterButton2;
     static JButton ACCEPT;
     public static JButton ACCEPTOWNER;
+    public static JButton REJECTOWNER;
 
 
 
@@ -100,7 +101,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         CarImagePanel2.setBackground(new Color(199, 160, 215));
 
         JLabel CarLabel2 = new JLabel();
-        CarLabel2.setIcon(new ImageIcon("Header.png"));
+        CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\Downloads\\Header.png"));
         CarLabel2.setBackground(Color.black);
         //CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
 
@@ -110,7 +111,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         HomeScreenPanel.setLayout(null);
         HomeScreenPanel.setPreferredSize(new Dimension(900,900));
 
-        ImageIcon favicon = new ImageIcon("MotherBoardIcon.png");
+        ImageIcon favicon = new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\MotherBoardIcon.png");
 
         HomeScreenFrame.setIconImage(favicon.getImage());
         TimeLabel = new JLabel();
@@ -195,7 +196,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelTime = new JLabel("Job Duration (Hours)");
         JLabel labelDeadline = new JLabel("Deadline");
         JLabel CarLabel2 = new JLabel();
-        CarLabel2.setIcon(new ImageIcon("tablet.png"));
+        CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\tablet.png"));
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH: mm :ss");
         LocalDateTime now = LocalDateTime.now();
         String DateTimer = (dtf.format(now));
@@ -204,7 +205,7 @@ public class HomeScreen extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == enterButton2)
-                Job.Job2();
+                    Job.Job2();
                 System.out.println("Request Pending...");
                 Client.UserName = clientUserName.getText();
                 Client.fullName = clientFullName.getText();
@@ -335,7 +336,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         JLabel labelResTime = new JLabel("Residency Time (Hours)");
         JLabel CarLabel = new JLabel();
 
-        CarLabel.setIcon(new ImageIcon("Car.png"));
+        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\Car.png"));
 
         // ! Enter Button initialization
         JButton enterButton = new JButton(new AbstractAction("Enter") {
@@ -456,7 +457,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
         JLabel CarLabel = new JLabel();
 
-        CarLabel.setIcon(new ImageIcon("Car.png"));
+        CarLabel.setIcon(new ImageIcon("C:\\Users\\Luis\\CUS1166 GUI\\src\\Images\\Car.png"));
 
         // Compute Button
         //======================================================================================================================================
@@ -493,7 +494,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputeImagePanel3 = new JPanel();
                 ComputeImagePanel4 = new JPanel();
                 JLabel AdminGear = new JLabel();
-                AdminGear.setIcon(new ImageIcon("admin.png"));
+                AdminGear.setIcon(new ImageIcon("C:\\Users\\Luis\\Downloads\\admin.png"));
                 ComputeImagePanel2.add(AdminGear);
                 ComputeImagePanel2.setBackground(new Color(191,161,250));
                 // ComputeImagePanel2.setBorder(new EmptyBorder(20,0,10,0));
@@ -541,7 +542,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 
                 });
-                REJECT = new JButton(new AbstractAction("Reject") {
+                REJECT = new JButton(new AbstractAction("Reject Client") {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -556,6 +557,33 @@ public class HomeScreen extends JFrame implements ActionListener {
                             }
                             try {
                                 Client.REJECTCLIENT();
+
+
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                        // AdminSelect = Server.Admin.getText();
+                        // System.out.println(AdminSelect);
+                    }
+
+
+                });
+
+                REJECTOWNER = new JButton(new AbstractAction("Reject Owner") {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource()==REJECTOWNER) {
+                            System.out.println("Information rejected");
+                            Server.serverOutput = "MessageReject";
+
+                            try {
+                                Server.serverSocket.close();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            try {
                                 Owner.REJECTOWNER();
 
 
@@ -581,34 +609,34 @@ public class HomeScreen extends JFrame implements ActionListener {
                             Server.serverOutput = "MessageAccepted";
 
                             Client.APPENDCLIENT();
-                            Client.data("INSERT INTO clientinformation " 
-                            + "VALUES ('" + Client.UserName + "', '" + Client.fullName + "', '" + Client.duration + "', '" + Client.deadLine + "', '" + Client.JobIDString + "')");
+                            Client.data("INSERT INTO clientinformation "
+                                    + "VALUES ('" + Client.UserName + "', '" + Client.fullName + "', '" + Client.duration + "', '" + Client.deadLine + "', '" + Client.JobIDString + "')");
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
                     }
                     {
-                    }}));                
-                    ACCEPTOWNER = new JButton((new AbstractAction("Accept Owner") {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            if (e.getSource()==ACCEPTOWNER){
-                                Job.Job1();
-    
-                            }
-                            try {
-                                System.out.println("Information accepted");
-                                Server.serverOutput = "MessageAccepted";
-    
-                                Owner.APPENDOWNER();
-                                Owner.ownerData("INSERT INTO ownerinformation " 
-                                + "VALUES ('" + Owner.UserName + "', '" + Owner.fullName + "', '" + Owner.carMake + "', '" + Owner.carModel + "', '" + Owner.carYear + "', '" + Owner.carResidency + "')");
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
-                            }
+                    }}));
+                ACCEPTOWNER = new JButton((new AbstractAction("Accept Owner") {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource()==ACCEPTOWNER){
+                            Job.Job1();
+
                         }
-                        {
-                        }}));
+                        try {
+                            System.out.println("Information accepted");
+                            Server.serverOutput = "MessageAccepted";
+
+                            Owner.APPENDOWNER();
+                            Owner.ownerData("INSERT INTO ownerinformation "
+                                    + "VALUES ('" + Owner.UserName + "', '" + Owner.fullName + "', '" + Owner.carMake + "', '" + Owner.carModel + "', '" + Owner.carYear + "', '" + Owner.carResidency + "')");
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                    {
+                    }}));
                 ACCEPT.setBackground(new Color(249,249,249));
                 REJECT.setBackground(new Color(249,249,249));
                 calculate.setBackground(new Color(250, 249, 249));
@@ -639,9 +667,10 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputePanel.add(calculate);
                 ComputePanel.add(backButton3);
                 ComputeImagePanel.add(ACCEPT);
-                ComputeImagePanel.add(ACCEPTOWNER);
                 ComputeImagePanel.add(REJECT);
-              ;
+                ComputeImagePanel.add(ACCEPTOWNER);
+                ComputeImagePanel.add(REJECTOWNER);
+
                 ComputeImagePanel3.add(textArea);
 
 
