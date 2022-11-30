@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.DriverManager;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,12 +29,8 @@ public class Owner extends Main {
         try {
 
             BufferedWriter bw = new BufferedWriter(new FileWriter("OwnerInformation.txt", true));
-
             if (Owner.UserName == null);
-
             else {
-
-
                 bw.append(Server.ownerInput.toString());
                 bw.append(DateTimer + "\n");
                 JOptionPane.showMessageDialog(null, "The request has been accepted for:  " + Owner.UserName +" Name:  " + Owner.fullName , "Owner Login", JOptionPane.PLAIN_MESSAGE);
@@ -45,7 +44,6 @@ public class Owner extends Main {
         }
 
     }
-
     public static void REJECTOWNER() throws IOException {
         if (Owner.UserName==null);
 
@@ -55,6 +53,20 @@ public class Owner extends Main {
             JOptionPane.showMessageDialog(null, "The request sent by Owner:  " + Owner.UserName + " Full Name: " + Owner.fullName + " was rejected by Admin", " Owner Login ", JOptionPane.PLAIN_MESSAGE);
         }
     }
+    public static void ownerData(String command){        
+        try{
+           Class.forName("com.mysql.cj.jdbc.Driver");
+           Connection connection = DriverManager.getConnection(url, username, password);
+           Statement statement= connection.createStatement();
+           String sql = command;
+           int rows = statement.executeUpdate(sql);
+           if(rows>0){
+                   System.out.println("Data Was Inserted! ");
+           }
+       }
+       catch(Exception d){
+           System.out.println(d);
+       }}
 
 }
 
