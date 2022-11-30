@@ -75,6 +75,7 @@ public class HomeScreen extends JFrame implements ActionListener {
     static JButton loginButton;
     static JButton enterButton2;
     static JButton ACCEPT;
+    public static JButton ACCEPTOWNER;
 
 
 
@@ -568,7 +569,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
 
                 });
-                ACCEPT = new JButton((new AbstractAction("Accept") {
+                ACCEPT = new JButton((new AbstractAction("Accept Client") {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource()==ACCEPT){
@@ -580,14 +581,34 @@ public class HomeScreen extends JFrame implements ActionListener {
                             Server.serverOutput = "MessageAccepted";
 
                             Client.APPENDCLIENT();
-                            Owner.APPENDOWNER();
-
+                            Client.data("INSERT INTO clientinformation " 
+                            + "VALUES ('" + Client.UserName + "', '" + Client.fullName + "', '" + Client.duration + "', '" + Client.deadLine + "', '" + Client.JobIDString + "')");
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
                     }
                     {
-                    }}));
+                    }}));                
+                    ACCEPTOWNER = new JButton((new AbstractAction("Accept Owner") {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            if (e.getSource()==ACCEPTOWNER){
+                                Job.Job1();
+    
+                            }
+                            try {
+                                System.out.println("Information accepted");
+                                Server.serverOutput = "MessageAccepted";
+    
+                                Owner.APPENDOWNER();
+                                Owner.ownerData("INSERT INTO ownerinformation " 
+                                + "VALUES ('" + Owner.UserName + "', '" + Owner.fullName + "', '" + Owner.carMake + "', '" + Owner.carModel + "', '" + Owner.carYear + "', '" + Owner.carResidency + "')");
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                        {
+                        }}));
                 ACCEPT.setBackground(new Color(249,249,249));
                 REJECT.setBackground(new Color(249,249,249));
                 calculate.setBackground(new Color(250, 249, 249));
@@ -618,6 +639,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputePanel.add(calculate);
                 ComputePanel.add(backButton3);
                 ComputeImagePanel.add(ACCEPT);
+                ComputeImagePanel.add(ACCEPTOWNER);
                 ComputeImagePanel.add(REJECT);
               ;
                 ComputeImagePanel3.add(textArea);
