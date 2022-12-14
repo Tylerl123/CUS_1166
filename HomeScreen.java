@@ -25,6 +25,7 @@ public class HomeScreen extends JFrame implements ActionListener {
     private static JButton button2;
     private static JButton button3;
     public static JButton REJECT;
+    public static JButton Refresh;
 
     public static JLabel clientMessage;
 
@@ -97,13 +98,21 @@ public class HomeScreen extends JFrame implements ActionListener {
 
         HomeScreenPanel = new JPanel();
         JPanel CarImagePanel2 = new JPanel(); // ? made panel to hold car image label
-        CarImagePanel2.setPreferredSize(new Dimension(350, 850));
+        CarImagePanel2.setPreferredSize(new Dimension(450, 950));
         CarImagePanel2.setBackground(new Color(199, 160, 215));
+
+
+
 
         JLabel CarLabel2 = new JLabel();
         CarLabel2.setIcon(new ImageIcon("C:\\Users\\Luis\\Downloads\\Header.png"));
         CarLabel2.setBackground(Color.black);
-        //CarLabel2.setIcon(new ImageIcon("Images/tablet.png"));
+
+        JLabel CarLabel3 = new JLabel();
+        CarLabel3.setIcon(new ImageIcon("C:\\Users\\Luis\\Downloads\\header2.jpeg"));
+        CarLabel3.setBackground(Color.black);
+
+        //CarLabel2.setIcon(new ImageIcon("Images/AC
 
 
 
@@ -133,6 +142,7 @@ public class HomeScreen extends JFrame implements ActionListener {
         button3.setBounds(620,400,250,60);
         CarImagePanel2.add(CarLabel2);
         HomeScreenPanel.add(CarImagePanel2);
+
         HomeScreenPanel.add(button1);
         HomeScreenPanel.add(button2);
         HomeScreenPanel.add(button3);
@@ -478,6 +488,8 @@ public class HomeScreen extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(ControllerFrame,"Login Error");
                 }
             }
+
+
             public  void ComputeButton() throws IOException {
                 ComputeFrame = new JFrame("Compution");
                 ComputeFrame.getContentPane().setBackground(new Color(211, 193, 250));
@@ -489,6 +501,7 @@ public class HomeScreen extends JFrame implements ActionListener {
 
                 ComputePanel = new JPanel();
 
+
                 ComputeImagePanel = new JPanel();
                 ComputeImagePanel2 = new JPanel();
                 ComputeImagePanel3 = new JPanel();
@@ -498,7 +511,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputeImagePanel2.add(AdminGear);
                 ComputeImagePanel2.setBackground(new Color(191,161,250));
                 // ComputeImagePanel2.setBorder(new EmptyBorder(20,0,10,0));
-                ComputeImagePanel.setBorder(new EmptyBorder(20,0,10,0));
+              //  ComputeImagePanel.setBorder(new EmptyBorder(20,0,10,0));
                 ComputeImagePanel.setBackground(new Color(191, 161, 250));
                 ComputeImagePanel3.setBackground(new Color(191,161,250));
                 ComputeImagePanel4.setBackground(new Color(191,161,250));
@@ -516,10 +529,14 @@ public class HomeScreen extends JFrame implements ActionListener {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         try {
+                            ComputeFrame.dispose();
                             textArea2 = new JTextArea();
-                            ComputeImagePanel4.add(textArea2);
+                            textArea2.setFont(new Font("Arial",Font.BOLD,14));
+
+                            ComputeImagePanel3.add(textArea2);
                             textArea2.setOpaque(false);
                             Controller.Calculate();
+                            ComputeFrame.setVisible(true);
 
                         } catch (IOException ex) {
                             ex.printStackTrace();
@@ -608,7 +625,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                             System.out.println("Information accepted");
                             Server.serverOutput = "MessageAccepted";
 
-                            Client.APPENDCLIENT();
+                            Client.APPENDCLIENT(); //methods from client class
                             Client.data("INSERT INTO clientinformation "
                                     + "VALUES ('" + Client.UserName + "', '" + Client.fullName + "', '" + Client.duration + "', '" + Client.deadLine + "', '" + Client.JobIDString + "')");
                         } catch (IOException ex) {
@@ -637,6 +654,22 @@ public class HomeScreen extends JFrame implements ActionListener {
                     }
                     {
                     }}));
+                Refresh = new JButton((new AbstractAction("Refresh") {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource()==Refresh){
+                            try {
+                                new FileOutputStream("CompletionTime.txt",false).close();
+                                ComputeFrame.dispose();
+                                ComputeButton();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+
+                    }}));
+
+
                 ACCEPT.setBackground(new Color(249,249,249));
                 REJECT.setBackground(new Color(249,249,249));
                 calculate.setBackground(new Color(250, 249, 249));
@@ -648,6 +681,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                 textArea.setLayout(new FlowLayout(FlowLayout.CENTER));
                 textArea.setBounds(500,-100,425,400);
                 textArea.setBackground(new Color(191,161,250));
+                textArea.setFont(new Font("Arial",Font.BOLD,14));
                 textArea.setEditable(false);
 
 
@@ -664,6 +698,8 @@ public class HomeScreen extends JFrame implements ActionListener {
 
                     e.printStackTrace();
                 }
+
+
                 ComputePanel.add(calculate);
                 ComputePanel.add(backButton3);
                 ComputeImagePanel.add(ACCEPT);
@@ -672,6 +708,7 @@ public class HomeScreen extends JFrame implements ActionListener {
                 ComputeImagePanel.add(REJECTOWNER);
 
                 ComputeImagePanel3.add(textArea);
+                ComputeImagePanel2.add(Refresh);
 
 
                 ComputeFrame.add(ComputeImagePanel2);
