@@ -15,7 +15,7 @@ public class  Job extends Main {
     public static void Job1() {
 
         //Random random = new Random();
-       //JobID = random.nextInt(10000000) + 1;
+        //JobID = random.nextInt(10000000) + 1;
 
 
         try {
@@ -36,7 +36,7 @@ public class  Job extends Main {
                 bw.close();
 
                 BufferedWriter br = new BufferedWriter(new FileWriter("JobList.txt", true));
-                br.append(("Job ID:  " + Client.JobIDString + "  Duration:  " + Client.duration + "\n"));
+                br.append(("Job ID:  " + Client.JobIDString + "  Duration:  " + Client.duration + " hours" +"\n"));
 
                 br.close();
             }
@@ -68,28 +68,28 @@ public class  Job extends Main {
     public static void Job2() {
 
 
-            //bw.append("Job ID:" + JobID + "\n");
-            HomeScreen.clientJobDuration.getText();
+        //bw.append("Job ID:" + JobID + "\n");
+        HomeScreen.clientJobDuration.getText();
 
-            //JAB = HomeScreen.clientJobDuration.getText();
-            // INTCOMPLETION = Integer.parseInt(JAB);
-
-
-       HomeScreen.JobIDField.getText();
-       HomeScreen.clientJobDuration.getText();
+        //JAB = HomeScreen.clientJobDuration.getText();
+        // INTCOMPLETION = Integer.parseInt(JAB);
 
 
-
-
-
-
-        }
+        HomeScreen.JobIDField.getText();
+        HomeScreen.clientJobDuration.getText();
 
 
 
 
 
-        }
+
+    }
+
+
+
+
+
+}
 
 
 
