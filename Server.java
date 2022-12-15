@@ -64,7 +64,6 @@ public class Server  {
                 }
 
 
-                System.out.println("Would you like to save this message? Yes/No?");
                 {
 
                 }
@@ -76,4 +75,3 @@ public class Server  {
 
     }
 }
-
