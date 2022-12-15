@@ -55,10 +55,10 @@ public class Owner extends Main {
     }
     public static void ownerData(String command){
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, username, password);
-            Statement statement= connection.createStatement();
-            String sql = command;
+            Class.forName("com.mysql.cj.jdbc.Driver"); // name of driver
+            Connection connection = DriverManager.getConnection(url, username, password); // pulls from main
+            Statement statement= connection.createStatement(); // establishes the connection
+            String sql = command;        // owner data method
             int rows = statement.executeUpdate(sql);
                 System.out.println("SQL insert..");
         }
